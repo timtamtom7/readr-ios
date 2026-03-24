@@ -1,0 +1,562 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 54;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1ADD9BE03A3C80B7875FFDC1 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2DEAB2195F7BACC7A509BA /* Book.swift */; };
+		1FD56A905D26F04511611E0C /* CaptureFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632D0C5C86C019F6FFE6E88F /* CaptureFlowView.swift */; };
+		212CF8C12DBCEEBDB3994D51 /* QuoteSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E33C68563C9659EBEDDDA67 /* QuoteSelectionView.swift */; };
+		2289102DB695A58D853488FB /* Quote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13374EB74B4B91E516424912 /* Quote.swift */; };
+		2E2A893615020661AC48FAB8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C48DA4C6E559B0F6916A2D2 /* Assets.xcassets */; };
+		30E9E8A612DA4965DBF29708 /* ErrorStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3D77CBDC970D406D70B96C /* ErrorStateView.swift */; };
+		39664934C940B86C5E4873B9 /* PricingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462C12C4FBFB5DA9C066FD91 /* PricingView.swift */; };
+		493BA1086B4C7D02FD08EFF8 /* LibraryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6216A99D68DE69E9C33E4225 /* LibraryViewModel.swift */; };
+		52320696063A0A610639024D /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = 2E512D087D1FAB04FEAB2056 /* SQLite */; };
+		6059F6F17219044236487338 /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCB4E3EAB546CEBE6FDBCF8 /* LibraryView.swift */; };
+		67FA35714B5A798974A3C85B /* BookCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F4A0147AB22FA254AFED43F /* BookCard.swift */; };
+		7F115FEB360785187E4E48AC /* ReadrApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B890D93562500F018F7360 /* ReadrApp.swift */; };
+		7FD8CA9CEDB1EBD991887A0F /* QuoteDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B887A5D421E59A44DBBF54F /* QuoteDetailView.swift */; };
+		86F5D33BB95DA0CBA44D9573 /* CropView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29B1E9D49848C265E121D60 /* CropView.swift */; };
+		89A45F071CB4F6AFB7A94D09 /* DesignTokens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F19D9AC3069E354A6F703D /* DesignTokens.swift */; };
+		94E82AA82F6B437318BBE4FF /* CameraCaptureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92823719D1F071C127C130AB /* CameraCaptureView.swift */; };
+		96F994B359E6B2D058C30D3A /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FE039C7457864CC569017F /* AppState.swift */; };
+		9F5B074ADA8ACDA0AA3A4B9D /* OnboardingContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB467DD460CC582B79BE851F /* OnboardingContainerView.swift */; };
+		A5A1C699438FEA0EB53673C5 /* CaptureViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518DF82FA3D7D7E93D27951E /* CaptureViewModel.swift */; };
+		B06C9005B96A7F831558FB57 /* AppStoreAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73AD120D32550B3A26C08999 /* AppStoreAssets.swift */; };
+		BD010C5C0F1B0283CC2AE0A1 /* BookDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDC6EC6497FDC597EBC5672 /* BookDetailView.swift */; };
+		DE1724E9146498A92C71E7F4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9453E8552A3EB6FA4186BC23 /* ContentView.swift */; };
+		EB174797A8BE43EBF1F60D15 /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFF1D1A14D41778B20E4176 /* DatabaseService.swift */; };
+		FBDE900FB30355F97C7D72E0 /* OCRService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114C1C6605A2388213284E6B /* OCRService.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0384C7587A12643F7F0301E9 /* Readr.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Readr.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0C48DA4C6E559B0F6916A2D2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		114C1C6605A2388213284E6B /* OCRService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OCRService.swift; sourceTree = "<group>"; };
+		13374EB74B4B91E516424912 /* Quote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quote.swift; sourceTree = "<group>"; };
+		18FE039C7457864CC569017F /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		3BCB4E3EAB546CEBE6FDBCF8 /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
+		462C12C4FBFB5DA9C066FD91 /* PricingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PricingView.swift; sourceTree = "<group>"; };
+		4B887A5D421E59A44DBBF54F /* QuoteDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteDetailView.swift; sourceTree = "<group>"; };
+		4CDC6EC6497FDC597EBC5672 /* BookDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailView.swift; sourceTree = "<group>"; };
+		518DF82FA3D7D7E93D27951E /* CaptureViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureViewModel.swift; sourceTree = "<group>"; };
+		6216A99D68DE69E9C33E4225 /* LibraryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewModel.swift; sourceTree = "<group>"; };
+		632D0C5C86C019F6FFE6E88F /* CaptureFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureFlowView.swift; sourceTree = "<group>"; };
+		6D3D77CBDC970D406D70B96C /* ErrorStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorStateView.swift; sourceTree = "<group>"; };
+		6F4A0147AB22FA254AFED43F /* BookCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCard.swift; sourceTree = "<group>"; };
+		73AD120D32550B3A26C08999 /* AppStoreAssets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreAssets.swift; sourceTree = "<group>"; };
+		78F19D9AC3069E354A6F703D /* DesignTokens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignTokens.swift; sourceTree = "<group>"; };
+		7E33C68563C9659EBEDDDA67 /* QuoteSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteSelectionView.swift; sourceTree = "<group>"; };
+		92823719D1F071C127C130AB /* CameraCaptureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraCaptureView.swift; sourceTree = "<group>"; };
+		9453E8552A3EB6FA4186BC23 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		9DFF1D1A14D41778B20E4176 /* DatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
+		9F2DEAB2195F7BACC7A509BA /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
+		CB467DD460CC582B79BE851F /* OnboardingContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingContainerView.swift; sourceTree = "<group>"; };
+		D1B890D93562500F018F7360 /* ReadrApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadrApp.swift; sourceTree = "<group>"; };
+		F29B1E9D49848C265E121D60 /* CropView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CropView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		DE7CCF4615F81ABF71D1FD87 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				52320696063A0A610639024D /* SQLite in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		08D23D0644CFDAD2303FF5CB /* App */ = {
+			isa = PBXGroup;
+			children = (
+				18FE039C7457864CC569017F /* AppState.swift */,
+				9453E8552A3EB6FA4186BC23 /* ContentView.swift */,
+				78F19D9AC3069E354A6F703D /* DesignTokens.swift */,
+				D1B890D93562500F018F7360 /* ReadrApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		25D28A49610B88166D3706AA /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				08D23D0644CFDAD2303FF5CB /* App */,
+				468641C543434F55A2E11261 /* AppStore */,
+				C73DAD4BE4AD54D3A9CBA52F /* Models */,
+				BEE4DC1B62CD0A8F236A38BA /* Services */,
+				6CE6DF3949C8F2D61ED82580 /* ViewModels */,
+				946C94005E21B771436A989A /* Views */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		2A60AABD01CCC3CE7B48DBC1 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				462C12C4FBFB5DA9C066FD91 /* PricingView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		468641C543434F55A2E11261 /* AppStore */ = {
+			isa = PBXGroup;
+			children = (
+				73AD120D32550B3A26C08999 /* AppStoreAssets.swift */,
+			);
+			path = AppStore;
+			sourceTree = "<group>";
+		};
+		4DF2327B7AB36345DFC437FA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				0C48DA4C6E559B0F6916A2D2 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		67F2619076E64EED5479CEB0 /* Capture */ = {
+			isa = PBXGroup;
+			children = (
+				92823719D1F071C127C130AB /* CameraCaptureView.swift */,
+				632D0C5C86C019F6FFE6E88F /* CaptureFlowView.swift */,
+				F29B1E9D49848C265E121D60 /* CropView.swift */,
+				7E33C68563C9659EBEDDDA67 /* QuoteSelectionView.swift */,
+			);
+			path = Capture;
+			sourceTree = "<group>";
+		};
+		6A8FB70436738C7CEB2B2249 = {
+			isa = PBXGroup;
+			children = (
+				4DF2327B7AB36345DFC437FA /* Resources */,
+				25D28A49610B88166D3706AA /* Sources */,
+				F884A306046FC8226670C415 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		6CE6DF3949C8F2D61ED82580 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				518DF82FA3D7D7E93D27951E /* CaptureViewModel.swift */,
+				6216A99D68DE69E9C33E4225 /* LibraryViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		6FF6657ABD314D39EA2AE046 /* QuoteDetail */ = {
+			isa = PBXGroup;
+			children = (
+				4B887A5D421E59A44DBBF54F /* QuoteDetailView.swift */,
+			);
+			path = QuoteDetail;
+			sourceTree = "<group>";
+		};
+		72D912BD9C5A72BC35924753 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				3BCB4E3EAB546CEBE6FDBCF8 /* LibraryView.swift */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
+		946C94005E21B771436A989A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FD90FAB9FA99DA998FD6C93B /* BookDetail */,
+				67F2619076E64EED5479CEB0 /* Capture */,
+				A6C2AFD2F934096404C20BBE /* Components */,
+				72D912BD9C5A72BC35924753 /* Library */,
+				99131A833793ED0DB972B44B /* Onboarding */,
+				6FF6657ABD314D39EA2AE046 /* QuoteDetail */,
+				2A60AABD01CCC3CE7B48DBC1 /* Settings */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		99131A833793ED0DB972B44B /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				CB467DD460CC582B79BE851F /* OnboardingContainerView.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		A6C2AFD2F934096404C20BBE /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				6F4A0147AB22FA254AFED43F /* BookCard.swift */,
+				6D3D77CBDC970D406D70B96C /* ErrorStateView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		BEE4DC1B62CD0A8F236A38BA /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				9DFF1D1A14D41778B20E4176 /* DatabaseService.swift */,
+				114C1C6605A2388213284E6B /* OCRService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		C73DAD4BE4AD54D3A9CBA52F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9F2DEAB2195F7BACC7A509BA /* Book.swift */,
+				13374EB74B4B91E516424912 /* Quote.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F884A306046FC8226670C415 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0384C7587A12643F7F0301E9 /* Readr.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FD90FAB9FA99DA998FD6C93B /* BookDetail */ = {
+			isa = PBXGroup;
+			children = (
+				4CDC6EC6497FDC597EBC5672 /* BookDetailView.swift */,
+			);
+			path = BookDetail;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		17066FF0573F32F28DB601E5 /* Readr */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BECAFB6D21765E8F741C51FB /* Build configuration list for PBXNativeTarget "Readr" */;
+			buildPhases = (
+				FA569014AA7E102D03275273 /* Sources */,
+				05B140BB50A5686A30B7F64F /* Resources */,
+				DE7CCF4615F81ABF71D1FD87 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Readr;
+			packageProductDependencies = (
+				2E512D087D1FAB04FEAB2056 /* SQLite */,
+			);
+			productName = Readr;
+			productReference = 0384C7587A12643F7F0301E9 /* Readr.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A3A3FD30A4FE38BC01D03270 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					17066FF0573F32F28DB601E5 = {
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 68CBC29211CF42E420381F3E /* Build configuration list for PBXProject "Readr" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 6A8FB70436738C7CEB2B2249;
+			packageReferences = (
+				3F110E7BC3FCCC855891A4C3 /* XCRemoteSwiftPackageReference "SQLite.swift" */,
+			);
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				17066FF0573F32F28DB601E5 /* Readr */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		05B140BB50A5686A30B7F64F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2E2A893615020661AC48FAB8 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FA569014AA7E102D03275273 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				96F994B359E6B2D058C30D3A /* AppState.swift in Sources */,
+				B06C9005B96A7F831558FB57 /* AppStoreAssets.swift in Sources */,
+				1ADD9BE03A3C80B7875FFDC1 /* Book.swift in Sources */,
+				67FA35714B5A798974A3C85B /* BookCard.swift in Sources */,
+				BD010C5C0F1B0283CC2AE0A1 /* BookDetailView.swift in Sources */,
+				94E82AA82F6B437318BBE4FF /* CameraCaptureView.swift in Sources */,
+				1FD56A905D26F04511611E0C /* CaptureFlowView.swift in Sources */,
+				A5A1C699438FEA0EB53673C5 /* CaptureViewModel.swift in Sources */,
+				DE1724E9146498A92C71E7F4 /* ContentView.swift in Sources */,
+				86F5D33BB95DA0CBA44D9573 /* CropView.swift in Sources */,
+				EB174797A8BE43EBF1F60D15 /* DatabaseService.swift in Sources */,
+				89A45F071CB4F6AFB7A94D09 /* DesignTokens.swift in Sources */,
+				30E9E8A612DA4965DBF29708 /* ErrorStateView.swift in Sources */,
+				6059F6F17219044236487338 /* LibraryView.swift in Sources */,
+				493BA1086B4C7D02FD08EFF8 /* LibraryViewModel.swift in Sources */,
+				FBDE900FB30355F97C7D72E0 /* OCRService.swift in Sources */,
+				9F5B074ADA8ACDA0AA3A4B9D /* OnboardingContainerView.swift in Sources */,
+				39664934C940B86C5E4873B9 /* PricingView.swift in Sources */,
+				2289102DB695A58D853488FB /* Quote.swift in Sources */,
+				7FD8CA9CEDB1EBD991887A0F /* QuoteDetailView.swift in Sources */,
+				212CF8C12DBCEEBDB3994D51 /* QuoteSelectionView.swift in Sources */,
+				7F115FEB360785187E4E48AC /* ReadrApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		159CDF068F937B8914A5918A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_KEY_CFBundleDisplayName = Readr;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_NAME = Readr;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		40F2150E15F24AC2AB34E36E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Readr needs camera access to scan book pages";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Readr needs photo library access to import book page images";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 1.0.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.readr.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BBD69CEC5CE4A4B8DCC6DFDF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Readr needs camera access to scan book pages";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Readr needs photo library access to import book page images";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 1.0.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.readr.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		D9C30A4E60FB1F98F5820779 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_KEY_CFBundleDisplayName = Readr;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_NAME = Readr;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		68CBC29211CF42E420381F3E /* Build configuration list for PBXProject "Readr" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				40F2150E15F24AC2AB34E36E /* Debug */,
+				BBD69CEC5CE4A4B8DCC6DFDF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		BECAFB6D21765E8F741C51FB /* Build configuration list for PBXNativeTarget "Readr" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D9C30A4E60FB1F98F5820779 /* Debug */,
+				159CDF068F937B8914A5918A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3F110E7BC3FCCC855891A4C3 /* XCRemoteSwiftPackageReference "SQLite.swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/stephencelis/SQLite.swift";
+			requirement = {
+				kind = exactVersion;
+				version = 0.16.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2E512D087D1FAB04FEAB2056 /* SQLite */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3F110E7BC3FCCC855891A4C3 /* XCRemoteSwiftPackageReference "SQLite.swift" */;
+			productName = SQLite;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = A3A3FD30A4FE38BC01D03270 /* Project object */;
+}
