@@ -107,6 +107,24 @@ final class DatabaseService: @unchecked Sendable {
     private let qtQuoteId = Expression<Int64>("quote_id")
     private let qtTagId = Expression<Int64>("tag_id")
 
+    // Notes table
+    private let notes = Table("notes")
+    private let noteId = Expression<Int64>("id")
+    private let noteBookId = Expression<Int64>("book_id")
+    private let noteText = Expression<String>("text")
+    private let notePageNumber = Expression<Int?>("page_number")
+    private let noteHighlightText = Expression<String?>("highlight_text")
+    private let noteCreatedAt = Expression<Date>("created_at")
+    private let noteUpdatedAt = Expression<Date>("updated_at")
+
+    // QuoteHighlights table
+    private let quoteHighlights = Table("quote_highlights")
+    private let highlightId = Expression<Int64>("id")
+    private let highlightQuoteId = Expression<Int64>("quote_id")
+    private let highlightStartOffset = Expression<Int>("start_offset")
+    private let highlightEndOffset = Expression<Int>("end_offset")
+    private let highlightColorHex = Expression<String>("color_hex")
+
     private init() {
         setupDatabase()
     }
@@ -176,6 +194,28 @@ final class DatabaseService: @unchecked Sendable {
         // FTS5 for search
         try db?.run("CREATE VIRTUAL TABLE IF NOT EXISTS quotes_fts USING fts5(text), content='quotes', content_rowid='id'")
         try db?.run("CREATE VIRTUAL TABLE IF NOT EXISTS books_fts USING fts5(title, author), content='books', content_rowid='id'")
+
+        // Notes table
+        try db?.run(notes.create(ifNotExists: true) { t in
+            t.column(noteId, primaryKey: .autoincrement)
+            t.column(noteBookId)
+            t.column(noteText)
+            t.column(notePageNumber)
+            t.column(noteHighlightText)
+            t.column(noteCreatedAt, defaultValue: Date())
+            t.column(noteUpdatedAt, defaultValue: Date())
+            t.foreignKey(noteBookId, references: books, bookId, delete: .cascade)
+        })
+
+        // QuoteHighlights table
+        try db?.run(quoteHighlights.create(ifNotExists: true) { t in
+            t.column(highlightId, primaryKey: .autoincrement)
+            t.column(highlightQuoteId)
+            t.column(highlightStartOffset)
+            t.column(highlightEndOffset)
+            t.column(highlightColorHex, defaultValue: "f59e0b")
+            t.foreignKey(highlightQuoteId, references: quotes, quoteId, delete: .cascade)
+        })
     }
 
     private func seedSystemCollections() throws {
@@ -601,6 +641,91 @@ final class DatabaseService: @unchecked Sendable {
             result.append((tag, count))
         }
         return result
+    }
+
+    // MARK: - Note Operations
+
+    @discardableResult
+    nonisolated func insertNote(_ note: BookNote) throws -> Int64 {
+        guard let db = db else { throw DatabaseError.connectionFailed }
+        let insert = notes.insert(
+            noteBookId <- note.bookId,
+            noteText <- note.text,
+            notePageNumber <- note.pageNumber,
+            noteHighlightText <- note.highlightText,
+            noteCreatedAt <- note.createdAt,
+            noteUpdatedAt <- note.updatedAt
+        )
+        return try db.run(insert)
+    }
+
+    nonisolated func fetchNotesForBook(bookIdValue: Int64) throws -> [BookNote] {
+        guard let db = db else { throw DatabaseError.connectionFailed }
+        var result: [BookNote] = []
+        for row in try db.prepare(notes.filter(noteBookId == bookIdValue).order(noteCreatedAt.desc)) {
+            result.append(BookNote(
+                id: row[noteId],
+                bookId: row[noteBookId],
+                text: row[noteText],
+                pageNumber: row[notePageNumber],
+                highlightText: row[noteHighlightText],
+                createdAt: row[noteCreatedAt],
+                updatedAt: row[noteUpdatedAt]
+            ))
+        }
+        return result
+    }
+
+    nonisolated func updateNote(_ note: BookNote) throws {
+        guard let db = db else { throw DatabaseError.connectionFailed }
+        let toUpdate = notes.filter(noteId == note.id)
+        try db.run(toUpdate.update(
+            noteText <- note.text,
+            notePageNumber <- note.pageNumber,
+            noteHighlightText <- note.highlightText,
+            noteUpdatedAt <- Date()
+        ))
+    }
+
+    nonisolated func deleteNote(id: Int64) throws {
+        guard let db = db else { throw DatabaseError.connectionFailed }
+        let toDelete = notes.filter(noteId == id)
+        try db.run(toDelete.delete())
+    }
+
+    // MARK: - Quote Highlight Operations
+
+    @discardableResult
+    nonisolated func insertQuoteHighlight(_ highlight: QuoteHighlight) throws -> Int64 {
+        guard let db = db else { throw DatabaseError.connectionFailed }
+        let insert = quoteHighlights.insert(
+            highlightQuoteId <- highlight.quoteId,
+            highlightStartOffset <- highlight.startOffset,
+            highlightEndOffset <- highlight.endOffset,
+            highlightColorHex <- highlight.colorHex
+        )
+        return try db.run(insert)
+    }
+
+    nonisolated func fetchHighlightsForQuote(quoteIdValue: Int64) throws -> [QuoteHighlight] {
+        guard let db = db else { throw DatabaseError.connectionFailed }
+        var result: [QuoteHighlight] = []
+        for row in try db.prepare(quoteHighlights.filter(highlightQuoteId == quoteIdValue)) {
+            result.append(QuoteHighlight(
+                id: row[highlightId],
+                quoteId: row[highlightQuoteId],
+                startOffset: row[highlightStartOffset],
+                endOffset: row[highlightEndOffset],
+                colorHex: row[highlightColorHex]
+            ))
+        }
+        return result
+    }
+
+    nonisolated func deleteQuoteHighlight(id: Int64) throws {
+        guard let db = db else { throw DatabaseError.connectionFailed }
+        let toDelete = quoteHighlights.filter(highlightId == id)
+        try db.run(toDelete.delete())
     }
 
     // MARK: - File Storage

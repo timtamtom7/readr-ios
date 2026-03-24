@@ -6,6 +6,7 @@ struct BookDetailView: View {
     @Environment(\.dismiss) private var dismiss
     @State private var quotes: [Quote] = []
     @State private var selectedQuote: Quote?
+    @State private var noteCount: Int = 0
 
     var body: some View {
         NavigationStack {
@@ -17,6 +18,12 @@ struct BookDetailView: View {
                     VStack(spacing: 24) {
                         // Book header
                         bookHeader
+
+                        Divider()
+                            .padding(.horizontal)
+
+                        // Notes section
+                        notesSection
 
                         Divider()
                             .padding(.horizontal)
@@ -59,6 +66,7 @@ struct BookDetailView: View {
         }
         .onAppear {
             loadQuotes()
+            loadNoteCount()
         }
     }
 
@@ -127,6 +135,68 @@ struct BookDetailView: View {
         }
     }
 
+    private var notesSection: some View {
+        VStack(alignment: .leading, spacing: 16) {
+            HStack {
+                Text("Notes")
+                    .font(.headline)
+                    .foregroundStyle(DesignTokens.primaryText)
+
+                Spacer()
+
+                NavigationLink {
+                    BookNotesView(book: book)
+                } label: {
+                    HStack(spacing: 4) {
+                        if noteCount > 0 {
+                            Text("\(noteCount)")
+                                .font(.caption.weight(.semibold))
+                                .foregroundStyle(.white)
+                                .padding(.horizontal, 8)
+                                .padding(.vertical, 2)
+                                .background(DesignTokens.accent)
+                                .clipShape(Capsule())
+                        }
+                        Image(systemName: "chevron.right")
+                            .font(.caption)
+                            .foregroundStyle(DesignTokens.secondaryText)
+                    }
+                }
+            }
+
+            NavigationLink {
+                BookNotesView(book: book)
+            } label: {
+                HStack {
+                    Image(systemName: "note.text")
+                        .font(.title3)
+                        .foregroundStyle(DesignTokens.accent)
+                        .frame(width: 44, height: 44)
+                        .background(DesignTokens.accent.opacity(0.12))
+                        .clipShape(RoundedRectangle(cornerRadius: 10))
+
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text(noteCount > 0 ? "\(noteCount) note\(noteCount == 1 ? "" : "s")" : "No notes yet")
+                            .font(.subheadline.weight(.medium))
+                            .foregroundStyle(DesignTokens.primaryText)
+                        Text("Add personal notes and reflections")
+                            .font(.caption)
+                            .foregroundStyle(DesignTokens.secondaryText)
+                    }
+
+                    Spacer()
+
+                    Image(systemName: "chevron.right")
+                        .font(.caption)
+                        .foregroundStyle(DesignTokens.secondaryText.opacity(0.5))
+                }
+                .padding()
+                .background(DesignTokens.surface, in: RoundedRectangle(cornerRadius: 12))
+            }
+            .buttonStyle(.plain)
+        }
+    }
+
     private var quotesSection: some View {
         VStack(alignment: .leading, spacing: 16) {
             Text("Quotes")
@@ -155,6 +225,15 @@ struct BookDetailView: View {
             quotes = try DatabaseService.shared.fetchQuotes(forBookId: book.id)
         } catch {
             // Handle error
+        }
+    }
+
+    private func loadNoteCount() {
+        DispatchQueue.global(qos: .userInitiated).async {
+            let notes = (try? DatabaseService.shared.fetchNotesForBook(bookIdValue: book.id)) ?? []
+            DispatchQueue.main.async {
+                noteCount = notes.count
+            }
         }
     }
 }

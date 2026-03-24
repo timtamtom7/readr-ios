@@ -53,6 +53,7 @@ struct DiscoverView: View {
     @State private var showingRandomQuote = false
     @State private var showingCollections = false
     @State private var showingTags = false
+    @State private var showingRecommendations = false
 
     var body: some View {
         NavigationStack {
@@ -62,9 +63,19 @@ struct DiscoverView: View {
 
                 ScrollView {
                     VStack(spacing: 20) {
-                        // Random Quote Card
+                        // Recommendations
                         DiscoverCard(
                             icon: "sparkles",
+                            title: "For You",
+                            subtitle: "Book recommendations based on your library",
+                            color: DesignTokens.accent
+                        ) {
+                            showingRecommendations = true
+                        }
+
+                        // Random Quote Card
+                        DiscoverCard(
+                            icon: "quote.bubble",
                             title: "Quote of the Day",
                             subtitle: "A random quote from your library",
                             color: DesignTokens.accent
@@ -119,6 +130,9 @@ struct DiscoverView: View {
             }
             .sheet(isPresented: $showingTags) {
                 TagManagementView()
+            }
+            .sheet(isPresented: $showingRecommendations) {
+                RecommendationsView()
             }
         }
     }
@@ -459,6 +473,7 @@ struct SavedQuoteRow: View {
 // MARK: - Settings View
 struct SettingsView: View {
     @State private var showingPricing = false
+    @State private var showingExport = false
 
     var body: some View {
         NavigationStack {
@@ -525,14 +540,18 @@ struct SettingsView: View {
                                 .tint(DesignTokens.accent)
                         }
 
-                        HStack {
-                            settingIcon("square.and.arrow.up", color: DesignTokens.secondaryText)
-                            Text("Export All Data")
-                                .foregroundStyle(DesignTokens.primaryText)
-                            Spacer()
-                            Image(systemName: "chevron.right")
-                                .font(.caption)
-                                .foregroundStyle(DesignTokens.secondaryText)
+                        Button {
+                            showingExport = true
+                        } label: {
+                            HStack {
+                                settingIcon("square.and.arrow.up", color: DesignTokens.secondaryText)
+                                Text("Export Quotes")
+                                    .foregroundStyle(DesignTokens.primaryText)
+                                Spacer()
+                                Image(systemName: "chevron.right")
+                                    .font(.caption)
+                                    .foregroundStyle(DesignTokens.secondaryText)
+                            }
                         }
                     } header: {
                         Text("Data")
@@ -596,6 +615,9 @@ struct SettingsView: View {
             .navigationTitle("Settings")
             .sheet(isPresented: $showingPricing) {
                 PricingView()
+            }
+            .sheet(isPresented: $showingExport) {
+                ExportView()
             }
         }
     }
