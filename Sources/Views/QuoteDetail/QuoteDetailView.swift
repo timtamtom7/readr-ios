@@ -2,7 +2,16 @@ import SwiftUI
 
 struct QuoteDetailView: View {
     let quote: Quote
+    let book: Book?
     @Environment(\.dismiss) private var dismiss
+    @State private var showingQuoteCard = false
+    @State private var resolvedBook: Book?
+
+    init(quote: Quote, book: Book? = nil) {
+        self.quote = quote
+        self.book = book
+        _resolvedBook = State(initialValue: book)
+    }
 
     var body: some View {
         NavigationStack {
@@ -21,6 +30,9 @@ struct QuoteDetailView: View {
                                 .aspectRatio(contentMode: .fit)
                                 .clipShape(RoundedRectangle(cornerRadius: 12))
                                 .shadow(color: .black.opacity(0.1), radius: 8, x: 0, y: 4)
+                                .onTapGesture {
+                                    showingQuoteCard = true
+                                }
                         }
 
                         // Quote text
@@ -41,6 +53,42 @@ struct QuoteDetailView: View {
                                 .font(.system(.title3, design: .serif))
                                 .foregroundStyle(DesignTokens.primaryText)
                                 .textSelection(.enabled)
+
+                            if let book = resolvedBook {
+                                Divider()
+                                    .padding(.vertical, 4)
+
+                                HStack {
+                                    Image(systemName: "book.closed")
+                                        .font(.caption)
+                                    Text(book.title)
+                                        .font(.caption)
+                                        .fontWeight(.medium)
+                                    if !book.author.isEmpty {
+                                        Text("— \(book.author)")
+                                            .font(.caption)
+                                            .foregroundStyle(DesignTokens.secondaryText)
+                                    }
+                                }
+                                .foregroundStyle(DesignTokens.secondaryText)
+                            }
+
+                            // Create quote card button
+                            Button {
+                                showingQuoteCard = true
+                            } label: {
+                                HStack {
+                                    Image(systemName: "square.on.square")
+                                    Text("Create Quote Card")
+                                }
+                                .font(.subheadline.weight(.medium))
+                                .foregroundStyle(DesignTokens.accent)
+                                .frame(maxWidth: .infinity)
+                                .padding(.vertical, 14)
+                                .background(DesignTokens.accent.opacity(0.1))
+                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                            }
+                            .padding(.top, 8)
 
                             Spacer()
                         }
@@ -69,15 +117,29 @@ struct QuoteDetailView: View {
                     }
                 }
             }
+            .sheet(isPresented: $showingQuoteCard) {
+                QuoteCardPreviewView(quote: quote, book: resolvedBook ?? Book(title: "Unknown Book"))
+            }
         }
+        .onAppear {
+            loadBook()
+        }
+    }
+
+    private func loadBook() {
+        guard resolvedBook == nil else { return }
+        resolvedBook = (try? DatabaseService.shared.fetchBook(id: quote.bookId)) ?? Book(title: "Unknown Book")
     }
 }
 
 #Preview {
-    QuoteDetailView(quote: Quote(
-        id: 1,
-        bookId: 1,
-        text: "The only way to do great work is to love what you do.",
-        createdAt: Date()
-    ))
+    QuoteDetailView(
+        quote: Quote(
+            id: 1,
+            bookId: 1,
+            text: "The only way to do great work is to love what you do.",
+            createdAt: Date()
+        ),
+        book: Book(title: "Steve Jobs", author: "Walter Isaacson")
+    )
 }

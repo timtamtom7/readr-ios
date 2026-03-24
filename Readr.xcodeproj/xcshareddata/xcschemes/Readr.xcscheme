@@ -21,6 +21,20 @@
                ReferencedContainer = "container:Readr.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "7E9FB68C70F79A8468846085"
+               BuildableName = "ReadrWidgetExtension.appex"
+               BlueprintName = "ReadrWidgetExtension"
+               ReferencedContainer = "container:Readr.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction

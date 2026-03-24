@@ -41,10 +41,29 @@ targets:
         PRODUCT_NAME: Readr
         INFOPLIST_KEY_CFBundleDisplayName: Readr
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        CODE_SIGN_ENTITLEMENTS: Sources/App/Readr.entitlements
     dependencies:
       - package: SQLite.swift
         product: SQLite
+      - target: ReadrWidgetExtension
     postCompileScripts: []
+
+  ReadrWidgetExtension:
+    type: app-extension
+    platform: iOS
+    sources:
+      - path: ReadrWidget
+        type: group
+    settings:
+      base:
+        PRODUCT_NAME: ReadrWidgetExtension
+        INFOPLIST_KEY_CFBundleDisplayName: Readr Widget
+        INFOPLIST_KEY_NSExtension_NSExtensionPointIdentifier: com.apple.widgetkit-extension
+        CODE_SIGN_ENTITLEMENTS: ReadrWidget/ReadrWidget.entitlements
+        SKIP_INSTALL: YES
+        ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME: WidgetBackground
+        GENERATE_INFOPLIST_FILE: YES
+    dependencies: []
 
 packages:
   SQLite.swift:
@@ -56,6 +75,7 @@ schemes:
     build:
       targets:
         Readr: all
+        ReadrWidgetExtension: all
     run:
       config: Debug
     profile:

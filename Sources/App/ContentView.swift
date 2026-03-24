@@ -26,19 +26,135 @@ struct MainTabView: View {
                 }
                 .tag(0)
 
+            DiscoverView()
+                .tabItem {
+                    Label("Discover", systemImage: "sparkles")
+                }
+                .tag(1)
+
             SavedQuotesView()
                 .tabItem {
                     Label("Saved", systemImage: "bookmark")
                 }
-                .tag(1)
+                .tag(2)
 
             SettingsView()
                 .tabItem {
                     Label("Settings", systemImage: "gear")
                 }
-                .tag(2)
+                .tag(3)
         }
         .tint(DesignTokens.accent)
+    }
+}
+
+// MARK: - Discover View
+struct DiscoverView: View {
+    @State private var showingRandomQuote = false
+    @State private var showingCollections = false
+
+    var body: some View {
+        NavigationStack {
+            ZStack {
+                DesignTokens.background
+                    .ignoresSafeArea()
+
+                ScrollView {
+                    VStack(spacing: 20) {
+                        // Random Quote Card
+                        DiscoverCard(
+                            icon: "sparkles",
+                            title: "Quote of the Day",
+                            subtitle: "A random quote from your library",
+                            color: DesignTokens.accent
+                        ) {
+                            showingRandomQuote = true
+                        }
+
+                        // Collections
+                        DiscoverCard(
+                            icon: "books.vertical.fill",
+                            title: "Collections",
+                            subtitle: "Organize books into shelves",
+                            color: Color(hex: "7b6b8a")
+                        ) {
+                            showingCollections = true
+                        }
+
+                        // Search
+                        NavigationLink {
+                            SearchView()
+                                .environmentObject(LibraryViewModel())
+                        } label: {
+                            DiscoverCard(
+                                icon: "magnifyingglass",
+                                title: "Search",
+                                subtitle: "Find quotes and books",
+                                color: Color(hex: "5a7a6a"),
+                                isNavigation: true
+                            ) { }
+                        }
+                    }
+                    .padding()
+                }
+            }
+            .navigationTitle("Discover")
+            .sheet(isPresented: $showingRandomQuote) {
+                RandomQuoteView()
+            }
+            .sheet(isPresented: $showingCollections) {
+                CollectionsView()
+                    .environmentObject(LibraryViewModel())
+            }
+        }
+    }
+}
+
+// MARK: - Discover Card
+struct DiscoverCard: View {
+    let icon: String
+    let title: String
+    let subtitle: String
+    let color: Color
+    var isNavigation: Bool = false
+    let action: () -> Void
+
+    var body: some View {
+        Button(action: action) {
+            HStack(spacing: 16) {
+                ZStack {
+                    Circle()
+                        .fill(color.opacity(0.12))
+                        .frame(width: 56, height: 56)
+
+                    Image(systemName: icon)
+                        .font(.title2)
+                        .foregroundStyle(color)
+                }
+
+                VStack(alignment: .leading, spacing: 4) {
+                    Text(title)
+                        .font(.headline)
+                        .foregroundStyle(DesignTokens.primaryText)
+
+                    Text(subtitle)
+                        .font(.caption)
+                        .foregroundStyle(DesignTokens.secondaryText)
+                }
+
+                Spacer()
+
+                if isNavigation {
+                    Image(systemName: "chevron.right")
+                        .font(.caption)
+                        .foregroundStyle(DesignTokens.secondaryText.opacity(0.5))
+                }
+            }
+            .padding(20)
+            .background(DesignTokens.surface, in: RoundedRectangle(cornerRadius: 16))
+            .shadow(color: .black.opacity(0.04), radius: 8, x: 0, y: 4)
+        }
+        .buttonStyle(.plain)
     }
 }
 
@@ -122,14 +238,30 @@ struct SavedQuotesView: View {
 // MARK: - Saved Quote Row
 struct SavedQuoteRow: View {
     let quote: Quote
+    @State private var showingQuoteCard = false
 
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text("\"\(quote.text)\"")
-                .font(.system(.body, design: .serif))
-                .foregroundStyle(DesignTokens.primaryText)
-                .lineLimit(3)
-                .multilineTextAlignment(.leading)
+            HStack(alignment: .top) {
+                Text("\"\(quote.text)\"")
+                    .font(.system(.body, design: .serif))
+                    .foregroundStyle(DesignTokens.primaryText)
+                    .lineLimit(3)
+                    .multilineTextAlignment(.leading)
+
+                Spacer()
+
+                Button {
+                    showingQuoteCard = true
+                } label: {
+                    Image(systemName: "square.on.square")
+                        .font(.caption)
+                        .foregroundStyle(DesignTokens.accent.opacity(0.7))
+                        .frame(width: 28, height: 28)
+                        .background(DesignTokens.accent.opacity(0.1))
+                        .clipShape(Circle())
+                }
+            }
 
             HStack {
                 Image(systemName: "book.closed")
@@ -146,6 +278,10 @@ struct SavedQuoteRow: View {
                 .fill(DesignTokens.surface)
                 .shadow(color: .black.opacity(0.04), radius: 4, x: 0, y: 2)
         )
+        .sheet(isPresented: $showingQuoteCard) {
+            let resolvedBook = (try? DatabaseService.shared.fetchBook(id: quote.bookId)) ?? Book(title: "Unknown Book")
+            QuoteCardPreviewView(quote: quote, book: resolvedBook)
+        }
     }
 }
 

@@ -1,6 +1,38 @@
 import Foundation
 import SQLite
 
+// MARK: - Collection (Shelf)
+struct Collection: Identifiable, Equatable {
+    let id: Int64
+    var name: String
+    var iconName: String
+    var sortOrder: Int
+    var isSystem: Bool  // true for Want to Read, Currently Reading, Finished
+
+    init(id: Int64 = 0, name: String, iconName: String = "bookmark", sortOrder: Int = 0, isSystem: Bool = false) {
+        self.id = id
+        self.name = name
+        self.iconName = iconName
+        self.sortOrder = sortOrder
+        self.isSystem = isSystem
+    }
+}
+
+// MARK: - BookCollection (junction)
+struct BookCollection: Identifiable {
+    let id: Int64
+    let bookId: Int64
+    let collectionId: Int64
+}
+
+// MARK: - SearchResult
+struct SearchResult: Identifiable {
+    let id = UUID()
+    let book: Book
+    let quote: Quote?
+}
+
+// MARK: - Database Service
 final class DatabaseService: @unchecked Sendable {
     static let shared = DatabaseService()
 
@@ -9,6 +41,8 @@ final class DatabaseService: @unchecked Sendable {
     // Tables
     private let books = Table("books")
     private let quotes = Table("quotes")
+    private let collections = Table("collections")
+    private let bookCollections = Table("book_collections")
 
     // Book columns
     private let bookId = Expression<Int64>("id")
@@ -24,6 +58,18 @@ final class DatabaseService: @unchecked Sendable {
     private let quotePagePath = Expression<String?>("page_image_path")
     private let quoteCreatedAt = Expression<Date>("created_at")
 
+    // Collection columns
+    private let colId = Expression<Int64>("id")
+    private let colName = Expression<String>("name")
+    private let colIconName = Expression<String>("icon_name")
+    private let colSortOrder = Expression<Int>("sort_order")
+    private let colIsSystem = Expression<Bool>("is_system")
+
+    // BookCollection columns
+    private let bcId = Expression<Int64>("id")
+    private let bcBookId = Expression<Int64>("book_id")
+    private let bcCollectionId = Expression<Int64>("collection_id")
+
     private init() {
         setupDatabase()
     }
@@ -34,6 +80,7 @@ final class DatabaseService: @unchecked Sendable {
             let dbPath = documentsPath.appendingPathComponent("readr.sqlite3").path
             db = try Connection(dbPath)
             try createTables()
+            try seedSystemCollections()
         } catch {
             print("Database setup error: \(error)")
         }
@@ -56,6 +103,47 @@ final class DatabaseService: @unchecked Sendable {
             t.column(quoteCreatedAt, defaultValue: Date())
             t.foreignKey(quoteBookId, references: books, bookId, delete: .cascade)
         })
+
+        try db?.run(collections.create(ifNotExists: true) { t in
+            t.column(colId, primaryKey: .autoincrement)
+            t.column(colName)
+            t.column(colIconName, defaultValue: "bookmark")
+            t.column(colSortOrder, defaultValue: 0)
+            t.column(colIsSystem, defaultValue: false)
+        })
+
+        try db?.run(bookCollections.create(ifNotExists: true) { t in
+            t.column(bcId, primaryKey: .autoincrement)
+            t.column(bcBookId)
+            t.column(bcCollectionId)
+            t.foreignKey(bcBookId, references: books, bookId, delete: .cascade)
+            t.foreignKey(bcCollectionId, references: collections, colId, delete: .cascade)
+            t.unique(bcBookId, bcCollectionId)
+        })
+
+        // FTS5 for search
+        try db?.run("CREATE VIRTUAL TABLE IF NOT EXISTS quotes_fts USING fts5(text), content='quotes', content_rowid='id'")
+        try db?.run("CREATE VIRTUAL TABLE IF NOT EXISTS books_fts USING fts5(title, author), content='books', content_rowid='id'")
+    }
+
+    private func seedSystemCollections() throws {
+        guard let db = db else { return }
+        let count = try db.scalar(collections.count)
+        if count > 0 { return }
+
+        let systemCollections = [
+            ("Want to Read", "bookmark", 0, true),
+            ("Currently Reading", "book", 1, true),
+            ("Finished", "checkmark.bookmark", 2, true)
+        ]
+        for (name, icon, order, system) in systemCollections {
+            try db.run(collections.insert(
+                colName <- name,
+                colIconName <- icon,
+                colSortOrder <- order,
+                colIsSystem <- system
+            ))
+        }
     }
 
     // MARK: - Book Operations
@@ -112,6 +200,17 @@ final class DatabaseService: @unchecked Sendable {
         try db.run(bookToDelete.delete())
     }
 
+    nonisolated func updateBook(_ book: Book) throws {
+        guard let db = db else { throw DatabaseError.connectionFailed }
+
+        let toUpdate = books.filter(bookId == book.id)
+        try db.run(toUpdate.update(
+            bookTitle <- book.title,
+            bookAuthor <- book.author,
+            bookCoverPath <- book.coverImagePath
+        ))
+    }
+
     // MARK: - Quote Operations
 
     @discardableResult
@@ -157,6 +256,197 @@ final class DatabaseService: @unchecked Sendable {
 
         let quoteToDelete = quotes.filter(quoteId == id)
         try db.run(quoteToDelete.delete())
+    }
+
+    // MARK: - Collection Operations
+
+    nonisolated func fetchAllCollections() throws -> [Collection] {
+        guard let db = db else { throw DatabaseError.connectionFailed }
+        var result: [Collection] = []
+        for row in try db.prepare(collections.order(colSortOrder.asc)) {
+            result.append(Collection(
+                id: row[colId],
+                name: row[colName],
+                iconName: row[colIconName],
+                sortOrder: row[colSortOrder],
+                isSystem: row[colIsSystem]
+            ))
+        }
+        return result
+    }
+
+    @discardableResult
+    nonisolated func insertCollection(_ collection: Collection) throws -> Int64 {
+        guard let db = db else { throw DatabaseError.connectionFailed }
+        let maxOrder = try db.scalar(collections.select(colSortOrder.max)) ?? 0
+        let insert = collections.insert(
+            colName <- collection.name,
+            colIconName <- collection.iconName,
+            colSortOrder <- maxOrder + 1,
+            colIsSystem <- collection.isSystem
+        )
+        return try db.run(insert)
+    }
+
+    nonisolated func deleteCollection(id: Int64) throws {
+        guard let db = db else { throw DatabaseError.connectionFailed }
+        let toDelete = collections.filter(colId == id && colIsSystem == false)
+        try db.run(toDelete.delete())
+    }
+
+    nonisolated func updateCollection(_ collection: Collection) throws {
+        guard let db = db else { throw DatabaseError.connectionFailed }
+        let toUpdate = collections.filter(colId == collection.id)
+        try db.run(toUpdate.update(
+            colName <- collection.name,
+            colIconName <- collection.iconName
+        ))
+    }
+
+    // MARK: - BookCollection Operations
+
+    nonisolated func fetchCollectionsForBook(bookIdValue: Int64) throws -> [Collection] {
+        guard let db = db else { throw DatabaseError.connectionFailed }
+        var result: [Collection] = []
+        let query = collections
+            .join(bookCollections, on: colId == bcCollectionId)
+            .filter(bcBookId == bookIdValue)
+            .order(colSortOrder.asc)
+        for row in try db.prepare(query) {
+            result.append(Collection(
+                id: row[colId],
+                name: row[colName],
+                iconName: row[colIconName],
+                sortOrder: row[colSortOrder],
+                isSystem: row[colIsSystem]
+            ))
+        }
+        return result
+    }
+
+    nonisolated func fetchBooksForCollection(collectionIdValue: Int64) throws -> [Book] {
+        guard let db = db else { throw DatabaseError.connectionFailed }
+        var result: [Book] = []
+        let query = books
+            .join(bookCollections, on: bookId == bcBookId)
+            .filter(bcCollectionId == collectionIdValue)
+            .order(bookCreatedAt.desc)
+        for row in try db.prepare(query) {
+            result.append(Book(
+                id: row[bookId],
+                title: row[bookTitle],
+                author: row[bookAuthor],
+                coverImagePath: row[bookCoverPath],
+                createdAt: row[bookCreatedAt]
+            ))
+        }
+        return result
+    }
+
+    nonisolated func addBookToCollection(bookIdValue: Int64, collectionIdValue: Int64) throws {
+        guard let db = db else { throw DatabaseError.connectionFailed }
+        try db.run(bookCollections.insert(or: .ignore,
+            bcBookId <- bookIdValue,
+            bcCollectionId <- collectionIdValue
+        ))
+    }
+
+    nonisolated func removeBookFromCollection(bookIdValue: Int64, collectionIdValue: Int64) throws {
+        guard let db = db else { throw DatabaseError.connectionFailed }
+        let toRemove = bookCollections.filter(bcBookId == bookIdValue && bcCollectionId == collectionIdValue)
+        try db.run(toRemove.delete())
+    }
+
+    nonisolated func moveBookToCollection(bookIdValue: Int64, collectionIdValue: Int64) throws {
+        try removeBookFromCollection(bookIdValue: bookIdValue, collectionIdValue: collectionIdValue)
+        try addBookToCollection(bookIdValue: bookIdValue, collectionIdValue: collectionIdValue)
+    }
+
+    // MARK: - Search
+
+    nonisolated func search(query: String) throws -> [SearchResult] {
+        guard let db = db else { throw DatabaseError.connectionFailed }
+        let trimmed = query.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmed.isEmpty else { return [] }
+
+        var results: [SearchResult] = []
+        let likePattern = "%\(trimmed)%"
+
+        // Search books using SQLite.swift query builder
+        let bookQuery = books.filter(bookTitle.like(likePattern) || bookAuthor.like(likePattern)).limit(20)
+        for row in try db.prepare(bookQuery) {
+            let book = Book(
+                id: row[bookId],
+                title: row[bookTitle],
+                author: row[bookAuthor],
+                coverImagePath: row[bookCoverPath],
+                createdAt: row[bookCreatedAt]
+            )
+            results.append(SearchResult(book: book, quote: nil))
+        }
+
+        // Search quotes
+        let quoteQuery = quotes.filter(quoteText.like(likePattern)).limit(30)
+        for row in try db.prepare(quoteQuery) {
+            let fetchedBook = try fetchBook(id: row[quoteBookId])
+            let quote = Quote(
+                id: row[quoteId],
+                bookId: row[quoteBookId],
+                text: row[quoteText],
+                pageImagePath: row[quotePagePath],
+                createdAt: row[quoteCreatedAt]
+            )
+            results.append(SearchResult(book: fetchedBook ?? Book(title: "Unknown Book"), quote: quote))
+        }
+
+        return results
+    }
+
+    nonisolated func fetchRandomQuote() throws -> (Quote, Book)? {
+        guard let db = db else { throw DatabaseError.connectionFailed }
+
+        let sql = """
+            SELECT q.id, q.book_id, q.text, q.page_image_path, q.created_at,
+                   b.id, b.title, b.author, b.cover_image_path, b.created_at
+            FROM quotes q
+            JOIN books b ON q.book_id = b.id
+            ORDER BY RANDOM()
+            LIMIT 1
+        """
+
+        for row in try db.prepare(sql) {
+            let book = Book(
+                id: row[5] as! Int64,
+                title: row[6] as? String ?? "",
+                author: row[7] as? String ?? "",
+                coverImagePath: row[8] as? String,
+                createdAt: Date(timeIntervalSince1970: (row[9] as? Double) ?? Date().timeIntervalSince1970)
+            )
+            let quote = Quote(
+                id: row[0] as! Int64,
+                bookId: row[1] as! Int64,
+                text: row[2] as? String ?? "",
+                pageImagePath: row[3] as? String,
+                createdAt: Date(timeIntervalSince1970: (row[4] as? Double) ?? Date().timeIntervalSince1970)
+            )
+            return (quote, book)
+        }
+        return nil
+    }
+
+    nonisolated func fetchAllQuotes() throws -> [Quote] {
+        guard let db = db else { throw DatabaseError.connectionFailed }
+        var result: [Quote] = []
+        for row in try db.prepare(quotes.order(quoteCreatedAt.desc)) {
+            result.append(Quote(
+                id: row[quoteId],
+                bookId: row[quoteBookId],
+                text: row[quoteText],
+                pageImagePath: row[quotePagePath],
+                createdAt: row[quoteCreatedAt]
+            ))
+        }
+        return result
     }
 
     // MARK: - File Storage
