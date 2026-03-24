@@ -32,6 +32,7 @@
 		9F5B074ADA8ACDA0AA3A4B9D /* OnboardingContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB467DD460CC582B79BE851F /* OnboardingContainerView.swift */; };
 		A5A1C699438FEA0EB53673C5 /* CaptureViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518DF82FA3D7D7E93D27951E /* CaptureViewModel.swift */; };
 		A7C3E884EE3D2CDBE5B27F97 /* QuoteCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6066B097540A32A301D5F8C7 /* QuoteCardView.swift */; };
+		AA2259521A645F90A09E7398 /* TagPillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3776BF021A27BE4F0751728 /* TagPillView.swift */; };
 		B06C9005B96A7F831558FB57 /* AppStoreAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73AD120D32550B3A26C08999 /* AppStoreAssets.swift */; };
 		BD010C5C0F1B0283CC2AE0A1 /* BookDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDC6EC6497FDC597EBC5672 /* BookDetailView.swift */; };
 		DE1724E9146498A92C71E7F4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9453E8552A3EB6FA4186BC23 /* ContentView.swift */; };
@@ -89,6 +90,7 @@
 		9453E8552A3EB6FA4186BC23 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		9DFF1D1A14D41778B20E4176 /* DatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
 		9F2DEAB2195F7BACC7A509BA /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
+		A3776BF021A27BE4F0751728 /* TagPillView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagPillView.swift; sourceTree = "<group>"; };
 		A66360A31A92BE9D1145B814 /* CollectionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionsView.swift; sourceTree = "<group>"; };
 		CB467DD460CC582B79BE851F /* OnboardingContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingContainerView.swift; sourceTree = "<group>"; };
 		CE643DD7C5CC7CA7BDCE2CC4 /* ReadrWidgetExtension.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = ReadrWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -244,8 +246,17 @@
 				6FF6657ABD314D39EA2AE046 /* QuoteDetail */,
 				11AEEB30A1EF6A6EF820FFA6 /* Search */,
 				2A60AABD01CCC3CE7B48DBC1 /* Settings */,
+				95554143D284BC2FD642F6FD /* Tags */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		95554143D284BC2FD642F6FD /* Tags */ = {
+			isa = PBXGroup;
+			children = (
+				A3776BF021A27BE4F0751728 /* TagPillView.swift */,
+			);
+			path = Tags;
 			sourceTree = "<group>";
 		};
 		99131A833793ED0DB972B44B /* Onboarding */ = {
@@ -444,6 +455,7 @@
 				212CF8C12DBCEEBDB3994D51 /* QuoteSelectionView.swift in Sources */,
 				7F115FEB360785187E4E48AC /* ReadrApp.swift in Sources */,
 				54837E785B4097B1494E49BD /* SearchView.swift in Sources */,
+				AA2259521A645F90A09E7398 /* TagPillView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

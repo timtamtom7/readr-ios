@@ -1,11 +1,19 @@
 import SwiftUI
 
+enum CollectionSortOption: String, CaseIterable {
+    case dateAdded = "Date Added"
+    case title = "Title"
+    case author = "Author"
+    case quoteCount = "Quote Count"
+}
+
 struct CollectionsView: View {
     @EnvironmentObject var libraryVM: LibraryViewModel
     @State private var selectedCollection: Collection?
     @State private var showingCreateSheet = false
     @State private var newCollectionName = ""
     @State private var newCollectionIcon = "folder"
+    @State private var sortOption: CollectionSortOption = .dateAdded
 
     private let iconOptions = ["bookmark", "book", "checkmark.bookmark", "star", "heart", "folder", "tag", "flag", "lightbulb", "graduationcap"]
 
@@ -17,9 +25,27 @@ struct CollectionsView: View {
 
                 ScrollView {
                     VStack(spacing: 20) {
+                        // Sort picker
+                        HStack {
+                            Text("Sort by:")
+                                .font(.caption)
+                                .foregroundStyle(DesignTokens.secondaryText)
+
+                            Picker("Sort", selection: $sortOption) {
+                                ForEach(CollectionSortOption.allCases, id: \.self) { option in
+                                    Text(option.rawValue).tag(option)
+                                }
+                            }
+                            .pickerStyle(.menu)
+                            .tint(DesignTokens.accent)
+
+                            Spacer()
+                        }
+                        .padding(.horizontal)
+
                         // Collection cards grid
                         LazyVGrid(columns: [GridItem(.adaptive(minimum: 150, maximum: 200), spacing: 16)], spacing: 16) {
-                            ForEach(libraryVM.collections) { collection in
+                            ForEach(sortedCollections) { collection in
                                 CollectionCard(collection: collection, bookCount: bookCount(for: collection))
                                     .onTapGesture {
                                         selectedCollection = collection
@@ -59,6 +85,20 @@ struct CollectionsView: View {
             .sheet(isPresented: $showingCreateSheet) {
                 createCollectionSheet
             }
+        }
+    }
+
+    private var sortedCollections: [Collection] {
+        let collections = libraryVM.collections
+        switch sortOption {
+        case .dateAdded:
+            return collections.sorted { $0.sortOrder < $1.sortOrder }
+        case .title:
+            return collections.sorted { $0.name.localizedCaseInsensitiveCompare($1.name) == .orderedAscending }
+        case .author:
+            return collections  // Author doesn't apply to collections directly
+        case .quoteCount:
+            return collections.sorted { bookCount(for: $0) > bookCount(for: $1) }
         }
     }
 
@@ -197,6 +237,7 @@ struct CollectionCard: View {
         case "Want to Read": return "Reading List"
         case "Currently Reading": return "Active"
         case "Finished": return "Complete"
+        case "Abandoned": return "Stopped"
         default: return ""
         }
     }
@@ -209,6 +250,7 @@ struct CollectionDetailView: View {
     @Environment(\.dismiss) private var dismiss
     @State private var books: [Book] = []
     @State private var selectedBook: Book?
+    @State private var sortOption: CollectionSortOption = .dateAdded
 
     private let columns = [
         GridItem(.adaptive(minimum: 150, maximum: 200), spacing: 16)
@@ -223,19 +265,40 @@ struct CollectionDetailView: View {
                 if books.isEmpty {
                     emptyShelfState
                 } else {
-                    ScrollView {
-                        LazyVGrid(columns: columns, spacing: 16) {
-                            ForEach(books) { book in
-                                BookCard(
-                                    book: book,
-                                    quoteCount: libraryVM.quoteCounts[book.id] ?? 0
-                                )
-                                .onTapGesture {
-                                    selectedBook = book
+                    VStack(spacing: 0) {
+                        // Sort bar
+                        HStack {
+                            Text("Sort:")
+                                .font(.caption)
+                                .foregroundStyle(DesignTokens.secondaryText)
+
+                            Picker("Sort", selection: $sortOption) {
+                                ForEach(CollectionSortOption.allCases, id: \.self) { option in
+                                    Text(option.rawValue).tag(option)
                                 }
                             }
+                            .pickerStyle(.menu)
+                            .tint(DesignTokens.accent)
+
+                            Spacer()
                         }
-                        .padding()
+                        .padding(.horizontal)
+                        .padding(.vertical, 8)
+
+                        ScrollView {
+                            LazyVGrid(columns: columns, spacing: 16) {
+                                ForEach(sortedBooks) { book in
+                                    BookCard(
+                                        book: book,
+                                        quoteCount: libraryVM.quoteCounts[book.id] ?? 0
+                                    )
+                                    .onTapGesture {
+                                        selectedBook = book
+                                    }
+                                }
+                            }
+                            .padding()
+                        }
                     }
                 }
             }
@@ -258,6 +321,19 @@ struct CollectionDetailView: View {
         }
         .onAppear {
             loadBooks()
+        }
+    }
+
+    private var sortedBooks: [Book] {
+        switch sortOption {
+        case .dateAdded:
+            return books.sorted { $0.createdAt > $1.createdAt }
+        case .title:
+            return books.sorted { $0.title.localizedCaseInsensitiveCompare($1.title) == .orderedAscending }
+        case .author:
+            return books.sorted { $0.author.localizedCaseInsensitiveCompare($1.author) == .orderedAscending }
+        case .quoteCount:
+            return books.sorted { (libraryVM.quoteCounts[$0.id] ?? 0) > (libraryVM.quoteCounts[$1.id] ?? 0) }
         }
     }
 

@@ -7,6 +7,8 @@ enum QuoteCardTemplate: String, CaseIterable, Identifiable {
     case modern = "Modern"
     case editorial = "Editorial"
     case warm = "Warm"
+    case midnight = "Midnight"
+    case deepDark = "Deep Dark"
 
     var id: String { rawValue }
 
@@ -16,6 +18,8 @@ enum QuoteCardTemplate: String, CaseIterable, Identifiable {
         case .modern: return Color(hex: "2c2c2c")
         case .editorial: return Color(hex: "8b4a4a")
         case .warm: return Color(hex: "d4943a")
+        case .midnight: return Color(hex: "a78bfa")
+        case .deepDark: return Color(hex: "f97316")
         }
     }
 
@@ -25,6 +29,8 @@ enum QuoteCardTemplate: String, CaseIterable, Identifiable {
         case .modern: return Color(hex: "1a1a1a")
         case .editorial: return Color(hex: "f5f0e8")
         case .warm: return Color(hex: "fdf6ec")
+        case .midnight: return Color(hex: "1e1b4b")
+        case .deepDark: return Color(hex: "0c0a09")
         }
     }
 
@@ -34,6 +40,15 @@ enum QuoteCardTemplate: String, CaseIterable, Identifiable {
         case .modern: return Color(hex: "f5f0eb")
         case .editorial: return Color(hex: "2c2420")
         case .warm: return Color(hex: "3d2b1f")
+        case .midnight: return Color(hex: "f5f3ff")
+        case .deepDark: return Color(hex: "fef3c7")
+        }
+    }
+
+    var isDark: Bool {
+        switch self {
+        case .classic, .modern, .editorial, .warm: return false
+        case .midnight, .deepDark: return true
         }
     }
 }
@@ -49,6 +64,9 @@ struct QuoteCardView: View {
     @State private var showingExportOptions = false
     @State private var renderedImage: UIImage?
     @State private var showingShareActivity = false
+    @State private var showingShareError = false
+    @State private var shareErrorMessage = ""
+    @State private var showingCopiedToast = false
 
     init(quote: Quote, book: Book, template: QuoteCardTemplate = .classic, showShareButton: Bool = true) {
         self.quote = quote
@@ -79,6 +97,12 @@ struct QuoteCardView: View {
             Button("Share as Image") {
                 shareAsImage()
             }
+            Button("Share to Instagram") {
+                shareToInstagram()
+            }
+            Button("Copy Text") {
+                copyQuoteText()
+            }
             Button("Export as PDF") {
                 exportAsPDF()
             }
@@ -87,6 +111,23 @@ struct QuoteCardView: View {
         .sheet(isPresented: $showingShareActivity) {
             if let image = renderedImage {
                 ShareSheet(activityItems: [image])
+            }
+        }
+        .alert("Share Failed", isPresented: $showingShareError) {
+            Button("OK", role: .cancel) {}
+        } message: {
+            Text(shareErrorMessage)
+        }
+        .overlay(alignment: .bottom) {
+            if showingCopiedToast {
+                Text("Copied to clipboard")
+                    .font(.caption.weight(.medium))
+                    .foregroundStyle(.white)
+                    .padding(.horizontal, 16)
+                    .padding(.vertical, 10)
+                    .background(Color.black.opacity(0.75), in: Capsule())
+                    .padding(.bottom, 20)
+                    .transition(.move(edge: .bottom).combined(with: .opacity))
             }
         }
     }
@@ -102,6 +143,10 @@ struct QuoteCardView: View {
             editorialCard
         case .warm:
             warmCard
+        case .midnight:
+            midnightCard
+        case .deepDark:
+            deepDarkCard
         }
     }
 
@@ -298,6 +343,109 @@ struct QuoteCardView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 
+    // MARK: - Midnight Card (Dark)
+    private var midnightCard: some View {
+        VStack(spacing: 0) {
+            // Top gradient accent
+            LinearGradient(
+                colors: [template.accentColor.opacity(0.3), template.accentColor.opacity(0.0)],
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
+            .frame(height: 80)
+
+            Spacer()
+
+            Text(quote.text)
+                .font(.system(.title3, design: .serif))
+                .foregroundStyle(template.textColor)
+                .multilineTextAlignment(.center)
+                .lineSpacing(10)
+                .padding(.horizontal, 40)
+
+            Spacer()
+
+            VStack(spacing: 8) {
+                Text("— \(book.title)")
+                    .font(.subheadline.weight(.medium))
+                    .foregroundStyle(template.textColor.opacity(0.8))
+
+                if !book.author.isEmpty {
+                    Text(book.author)
+                        .font(.caption)
+                        .foregroundStyle(template.textColor.opacity(0.5))
+                }
+            }
+            .padding(.bottom, 40)
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(
+            RadialGradient(
+                colors: [Color(hex: "2d2a5e"), template.backgroundColor],
+                center: .topLeading,
+                startRadius: 0,
+                endRadius: 600
+            )
+        )
+    }
+
+    // MARK: - Deep Dark Card (Dark)
+    private var deepDarkCard: some View {
+        VStack(spacing: 0) {
+            // Decorative left border
+            Rectangle()
+                .fill(
+                    LinearGradient(
+                        colors: [template.accentColor, template.accentColor.opacity(0.3)],
+                        startPoint: .top,
+                        endPoint: .bottom
+                    )
+                )
+                .frame(width: 4)
+                .padding(.leading, 24)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.top, 32)
+
+            Spacer()
+
+            HStack(alignment: .top, spacing: 12) {
+                Text("\u{201C}")
+                    .font(.system(size: 60, design: .serif))
+                    .foregroundStyle(template.accentColor.opacity(0.3))
+                    .offset(y: -8)
+
+                Text(quote.text)
+                    .font(.system(.title3, design: .serif))
+                    .fontWeight(.medium)
+                    .foregroundStyle(template.textColor)
+                    .multilineTextAlignment(.leading)
+                    .lineSpacing(8)
+            }
+            .padding(.horizontal, 40)
+
+            Spacer()
+
+            HStack {
+                VStack(alignment: .leading, spacing: 4) {
+                    Text(book.title.uppercased())
+                        .font(.caption.weight(.bold))
+                        .foregroundStyle(template.accentColor.opacity(0.8))
+                        .tracking(1.5)
+
+                    if !book.author.isEmpty {
+                        Text(book.author)
+                            .font(.caption2)
+                            .foregroundStyle(template.textColor.opacity(0.4))
+                    }
+                }
+                Spacer()
+            }
+            .padding(.horizontal, 40)
+            .padding(.bottom, 40)
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+    }
+
     // MARK: - Export
 
     private func shareAsImage() {
@@ -307,6 +455,80 @@ struct QuoteCardView: View {
             if let image = renderer.uiImage {
                 renderedImage = image
                 showingShareActivity = true
+            } else {
+                shareErrorMessage = "Failed to render the quote card image. Please try again."
+                showingShareError = true
+            }
+        }
+    }
+
+    private func shareToInstagram() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
+            // Render square for Instagram (1080x1080)
+            let squareCard = cardContent
+                .frame(width: 1080, height: 1080)
+
+            let renderer = ImageRenderer(content: squareCard)
+            renderer.scale = 3.0
+            guard let image = renderer.uiImage,
+                  let imageData = image.pngData() else {
+                shareErrorMessage = "Failed to prepare image for Instagram. Please try again."
+                showingShareError = true
+                return
+            }
+
+            // Save to temp file for Instagram
+            let tempURL = FileManager.default.temporaryDirectory.appendingPathComponent("quote_\(quote.id).png")
+            do {
+                try imageData.write(to: tempURL)
+            } catch {
+                shareErrorMessage = "Failed to save image. Please try again."
+                showingShareError = true
+                return
+            }
+
+            // Use Instagram URL scheme
+            let instagramURL = URL(string: "instagram-stories://share?source_application=app.readr")!
+            let photoLibraryURL = URL(string: "photos-redirect://")!
+
+            if UIApplication.shared.canOpenURL(instagramURL) {
+                // Copy image data to pasteboard for Instagram Stories
+                let expiration = Date().addingTimeInterval(60 * 5)
+                UIPasteboard.general.setItems([["public.png": imageData]], options: [.expirationDate: expiration])
+
+                UIApplication.shared.open(instagramURL, options: [:], completionHandler: { success in
+                    if !success {
+                        shareErrorMessage = "Could not open Instagram. Please make sure Instagram is installed."
+                        DispatchQueue.main.async {
+                            showingShareError = true
+                        }
+                    }
+                })
+            } else if UIApplication.shared.canOpenURL(photoLibraryURL) {
+                // Fallback: save to photo library
+                UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+                shareErrorMessage = "Image saved to your photo library. Open Instagram to share it."
+                DispatchQueue.main.async {
+                    showingShareError = true
+                }
+            } else {
+                shareErrorMessage = "Instagram is not installed on this device."
+                DispatchQueue.main.async {
+                    showingShareError = true
+                }
+            }
+        })
+    }
+
+    private func copyQuoteText() {
+        let text = "\"\(quote.text)\"\n— \(book.title)\(book.author.isEmpty ? "" : ", \(book.author)")"
+        UIPasteboard.general.string = text
+        withAnimation(.easeInOut(duration: 0.2)) {
+            showingCopiedToast = true
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            withAnimation(.easeInOut(duration: 0.2)) {
+                showingCopiedToast = false
             }
         }
     }
@@ -325,8 +547,12 @@ struct QuoteCardView: View {
                     }
                 }
             } catch {
-                print("PDF export failed: \(error)")
+                shareErrorMessage = "Failed to export PDF. Please try again."
+                showingShareError = true
             }
+        } else {
+            shareErrorMessage = "Failed to generate PDF. Please try again."
+            showingShareError = true
         }
     }
 
@@ -471,8 +697,11 @@ struct ShareSheet: UIViewControllerRepresentable {
 struct RandomQuoteView: View {
     @State private var randomQuote: (Quote, Book)?
     @State private var isLoading = true
+    @State private var hasError = false
+    @State private var errorMessage = ""
     @Environment(\.dismiss) private var dismiss
     @State private var showingCardPreview = false
+    @State private var animateQuote = false
 
     var body: some View {
         NavigationStack {
@@ -487,12 +716,19 @@ struct RandomQuoteView: View {
                     VStack(spacing: 24) {
                         Spacer()
 
-                        // Quote card preview
+                        // Animated quote card
                         QuoteCardView(quote: quote, book: book, template: .classic, showShareButton: false)
                             .frame(height: 320)
                             .clipShape(RoundedRectangle(cornerRadius: 16))
                             .shadow(color: .black.opacity(0.1), radius: 12, x: 0, y: 6)
                             .padding(.horizontal, 32)
+                            .scaleEffect(animateQuote ? 1 : 0.9)
+                            .opacity(animateQuote ? 1 : 0)
+                            .onAppear {
+                                withAnimation(.spring(response: 0.4, dampingFraction: 0.7)) {
+                                    animateQuote = true
+                                }
+                            }
 
                         // Actions
                         VStack(spacing: 12) {
@@ -512,7 +748,10 @@ struct RandomQuoteView: View {
                             }
 
                             Button {
-                                loadRandomQuote()
+                                animateQuote = false
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                                    loadRandomQuote()
+                                }
                             } label: {
                                 HStack {
                                     Image(systemName: "shuffle")
@@ -526,6 +765,8 @@ struct RandomQuoteView: View {
 
                         Spacer()
                     }
+                } else if hasError {
+                    errorState
                 } else {
                     noQuotesState
                 }
@@ -555,9 +796,15 @@ struct RandomQuoteView: View {
 
     private var noQuotesState: some View {
         VStack(spacing: 20) {
-            Image(systemName: "sparkles")
-                .font(.system(size: 48))
-                .foregroundStyle(DesignTokens.accent.opacity(0.4))
+            ZStack {
+                Circle()
+                    .fill(DesignTokens.accent.opacity(0.08))
+                    .frame(width: 100, height: 100)
+
+                Image(systemName: "sparkles")
+                    .font(.system(size: 40))
+                    .foregroundStyle(DesignTokens.accent.opacity(0.4))
+            }
 
             Text("No quotes yet")
                 .font(.headline)
@@ -572,13 +819,67 @@ struct RandomQuoteView: View {
         .padding()
     }
 
+    private var errorState: some View {
+        VStack(spacing: 20) {
+            ZStack {
+                Circle()
+                    .fill(Color.red.opacity(0.08))
+                    .frame(width: 100, height: 100)
+
+                Image(systemName: "exclamationmark.triangle")
+                    .font(.system(size: 40))
+                    .foregroundStyle(Color.red.opacity(0.5))
+            }
+
+            Text("Couldn't load quote")
+                .font(.headline)
+                .foregroundStyle(DesignTokens.primaryText)
+
+            Text(errorMessage.isEmpty ? "Something went wrong. Please try again." : errorMessage)
+                .font(.subheadline)
+                .foregroundStyle(DesignTokens.secondaryText)
+                .multilineTextAlignment(.center)
+                .padding(.horizontal, 40)
+
+            Button {
+                loadRandomQuote()
+            } label: {
+                HStack {
+                    Image(systemName: "arrow.clockwise")
+                    Text("Try Again")
+                }
+                .font(.subheadline.weight(.medium))
+                .foregroundStyle(.white)
+                .padding(.horizontal, 24)
+                .padding(.vertical, 12)
+                .background(DesignTokens.accent)
+                .clipShape(Capsule())
+            }
+        }
+        .padding()
+    }
+
     private func loadRandomQuote() {
         isLoading = true
+        hasError = false
+        errorMessage = ""
+
         DispatchQueue.global(qos: .userInitiated).async {
-            let result = try? DatabaseService.shared.fetchRandomQuote()
-            DispatchQueue.main.async {
-                randomQuote = result
-                isLoading = false
+            do {
+                let result = try DatabaseService.shared.fetchRandomQuote()
+                DispatchQueue.main.async {
+                    randomQuote = result
+                    if result == nil {
+                        // No quotes in database
+                    }
+                    isLoading = false
+                }
+            } catch {
+                DispatchQueue.main.async {
+                    errorMessage = "Failed to load a random quote. Please try again."
+                    hasError = true
+                    isLoading = false
+                }
             }
         }
     }

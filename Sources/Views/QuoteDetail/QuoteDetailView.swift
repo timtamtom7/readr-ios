@@ -90,6 +90,12 @@ struct QuoteDetailView: View {
                             }
                             .padding(.top, 8)
 
+                            Divider()
+                                .padding(.vertical, 4)
+
+                            // Tags section
+                            QuoteTagEditorView(quoteId: quote.id)
+
                             Spacer()
                         }
                         .padding()

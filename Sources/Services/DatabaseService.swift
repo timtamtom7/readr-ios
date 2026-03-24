@@ -1,5 +1,30 @@
 import Foundation
 import SQLite
+import SwiftUI
+
+// MARK: - Tag
+struct Tag: Identifiable, Equatable, Hashable {
+    let id: Int64
+    var name: String
+    var colorHex: String
+
+    init(id: Int64 = 0, name: String, colorHex: String = "c87b4f") {
+        self.id = id
+        self.name = name
+        self.colorHex = colorHex
+    }
+
+    var color: Color {
+        Color(hex: colorHex)
+    }
+}
+
+// MARK: - QuoteTag (junction)
+struct QuoteTag: Identifiable {
+    let id: Int64
+    let quoteId: Int64
+    let tagId: Int64
+}
 
 // MARK: - Collection (Shelf)
 struct Collection: Identifiable, Equatable {
@@ -43,6 +68,8 @@ final class DatabaseService: @unchecked Sendable {
     private let quotes = Table("quotes")
     private let collections = Table("collections")
     private let bookCollections = Table("book_collections")
+    private let tags = Table("tags")
+    private let quoteTags = Table("quote_tags")
 
     // Book columns
     private let bookId = Expression<Int64>("id")
@@ -69,6 +96,16 @@ final class DatabaseService: @unchecked Sendable {
     private let bcId = Expression<Int64>("id")
     private let bcBookId = Expression<Int64>("book_id")
     private let bcCollectionId = Expression<Int64>("collection_id")
+
+    // Tag columns
+    private let tagId = Expression<Int64>("id")
+    private let tagName = Expression<String>("name")
+    private let tagColorHex = Expression<String>("color_hex")
+
+    // QuoteTag columns
+    private let qtId = Expression<Int64>("id")
+    private let qtQuoteId = Expression<Int64>("quote_id")
+    private let qtTagId = Expression<Int64>("tag_id")
 
     private init() {
         setupDatabase()
@@ -121,6 +158,21 @@ final class DatabaseService: @unchecked Sendable {
             t.unique(bcBookId, bcCollectionId)
         })
 
+        try db?.run(tags.create(ifNotExists: true) { t in
+            t.column(tagId, primaryKey: .autoincrement)
+            t.column(tagName)
+            t.column(tagColorHex, defaultValue: "c87b4f")
+        })
+
+        try db?.run(quoteTags.create(ifNotExists: true) { t in
+            t.column(qtId, primaryKey: .autoincrement)
+            t.column(qtQuoteId)
+            t.column(qtTagId)
+            t.foreignKey(qtQuoteId, references: quotes, quoteId, delete: .cascade)
+            t.foreignKey(qtTagId, references: tags, tagId, delete: .cascade)
+            t.unique(qtQuoteId, qtTagId)
+        })
+
         // FTS5 for search
         try db?.run("CREATE VIRTUAL TABLE IF NOT EXISTS quotes_fts USING fts5(text), content='quotes', content_rowid='id'")
         try db?.run("CREATE VIRTUAL TABLE IF NOT EXISTS books_fts USING fts5(title, author), content='books', content_rowid='id'")
@@ -134,7 +186,8 @@ final class DatabaseService: @unchecked Sendable {
         let systemCollections = [
             ("Want to Read", "bookmark", 0, true),
             ("Currently Reading", "book", 1, true),
-            ("Finished", "checkmark.bookmark", 2, true)
+            ("Finished", "checkmark.bookmark", 2, true),
+            ("Abandoned", "xmark.book", 3, true)
         ]
         for (name, icon, order, system) in systemCollections {
             try db.run(collections.insert(
@@ -445,6 +498,107 @@ final class DatabaseService: @unchecked Sendable {
                 pageImagePath: row[quotePagePath],
                 createdAt: row[quoteCreatedAt]
             ))
+        }
+        return result
+    }
+
+    // MARK: - Tag Operations
+
+    nonisolated func fetchAllTags() throws -> [Tag] {
+        guard let db = db else { throw DatabaseError.connectionFailed }
+        var result: [Tag] = []
+        for row in try db.prepare(tags.order(tagName.asc)) {
+            result.append(Tag(
+                id: row[tagId],
+                name: row[tagName],
+                colorHex: row[tagColorHex]
+            ))
+        }
+        return result
+    }
+
+    @discardableResult
+    nonisolated func insertTag(_ tag: Tag) throws -> Int64 {
+        guard let db = db else { throw DatabaseError.connectionFailed }
+        let insert = tags.insert(
+            tagName <- tag.name,
+            tagColorHex <- tag.colorHex
+        )
+        return try db.run(insert)
+    }
+
+    nonisolated func deleteTag(id: Int64) throws {
+        guard let db = db else { throw DatabaseError.connectionFailed }
+        let toDelete = tags.filter(tagId == id)
+        try db.run(toDelete.delete())
+    }
+
+    nonisolated func updateTag(_ tag: Tag) throws {
+        guard let db = db else { throw DatabaseError.connectionFailed }
+        let toUpdate = tags.filter(tagId == tag.id)
+        try db.run(toUpdate.update(
+            tagName <- tag.name,
+            tagColorHex <- tag.colorHex
+        ))
+    }
+
+    nonisolated func fetchTagsForQuote(quoteIdValue: Int64) throws -> [Tag] {
+        guard let db = db else { throw DatabaseError.connectionFailed }
+        var result: [Tag] = []
+        let query = tags
+            .join(quoteTags, on: tagId == qtTagId)
+            .filter(qtQuoteId == quoteIdValue)
+            .order(tagName.asc)
+        for row in try db.prepare(query) {
+            result.append(Tag(
+                id: row[tagId],
+                name: row[tagName],
+                colorHex: row[tagColorHex]
+            ))
+        }
+        return result
+    }
+
+    nonisolated func addTagToQuote(quoteIdValue: Int64, tagIdValue: Int64) throws {
+        guard let db = db else { throw DatabaseError.connectionFailed }
+        try db.run(quoteTags.insert(or: .ignore,
+            qtQuoteId <- quoteIdValue,
+            qtTagId <- tagIdValue
+        ))
+    }
+
+    nonisolated func removeTagFromQuote(quoteIdValue: Int64, tagIdValue: Int64) throws {
+        guard let db = db else { throw DatabaseError.connectionFailed }
+        let toRemove = quoteTags.filter(qtQuoteId == quoteIdValue && qtTagId == tagIdValue)
+        try db.run(toRemove.delete())
+    }
+
+    nonisolated func fetchQuotesForTag(tagIdValue: Int64) throws -> [Quote] {
+        guard let db = db else { throw DatabaseError.connectionFailed }
+        var result: [Quote] = []
+        let query = quotes
+            .join(quoteTags, on: quoteId == qtQuoteId)
+            .filter(qtTagId == tagIdValue)
+            .order(quoteCreatedAt.desc)
+        for row in try db.prepare(query) {
+            result.append(Quote(
+                id: row[quoteId],
+                bookId: row[quoteBookId],
+                text: row[quoteText],
+                pageImagePath: row[quotePagePath],
+                createdAt: row[quoteCreatedAt]
+            ))
+        }
+        return result
+    }
+
+    nonisolated func fetchAllTagsWithCounts() throws -> [(Tag, Int)] {
+        guard let db = db else { throw DatabaseError.connectionFailed }
+        var result: [(Tag, Int)] = []
+        for row in try db.prepare(tags.order(tagName.asc)) {
+            let tag = Tag(id: row[tagId], name: row[tagName], colorHex: row[tagColorHex])
+            let count = try db.scalar(quoteTags.filter(qtTagId == row[tagId]).count)
+            result.append((tag, count))
         }
         return result
     }

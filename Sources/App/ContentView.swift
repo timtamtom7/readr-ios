@@ -52,6 +52,7 @@ struct MainTabView: View {
 struct DiscoverView: View {
     @State private var showingRandomQuote = false
     @State private var showingCollections = false
+    @State private var showingTags = false
 
     var body: some View {
         NavigationStack {
@@ -69,6 +70,16 @@ struct DiscoverView: View {
                             color: DesignTokens.accent
                         ) {
                             showingRandomQuote = true
+                        }
+
+                        // Tags
+                        DiscoverCard(
+                            icon: "tag.fill",
+                            title: "Tags",
+                            subtitle: "Organize and filter quotes",
+                            color: Color(hex: "7b6b8a")
+                        ) {
+                            showingTags = true
                         }
 
                         // Collections
@@ -105,6 +116,9 @@ struct DiscoverView: View {
             .sheet(isPresented: $showingCollections) {
                 CollectionsView()
                     .environmentObject(LibraryViewModel())
+            }
+            .sheet(isPresented: $showingTags) {
+                TagManagementView()
             }
         }
     }
@@ -161,7 +175,12 @@ struct DiscoverCard: View {
 // MARK: - Saved Quotes View
 struct SavedQuotesView: View {
     @State private var quotes: [Quote] = []
+    @State private var allQuotes: [Quote] = []
     @State private var selectedQuote: Quote?
+    @State private var showingTagFilter = false
+    @State private var activeTagIds: Set<Int64> = []
+    @State private var showingTagManagement = false
+    @State private var isFiltering = false
 
     var body: some View {
         NavigationStack {
@@ -169,15 +188,46 @@ struct SavedQuotesView: View {
                 DesignTokens.background
                     .ignoresSafeArea()
 
-                if quotes.isEmpty {
+                if allQuotes.isEmpty {
                     savedEmptyState
+                } else if quotes.isEmpty && isFiltering {
+                    filteredEmptyState
                 } else {
                     quotesList
                 }
             }
             .navigationTitle("Saved")
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    HStack(spacing: 16) {
+                        Button {
+                            showingTagFilter = true
+                        } label: {
+                            Image(systemName: activeTagIds.isEmpty ? "line.3.horizontal.decrease.circle" : "line.3.horizontal.decrease.circle.fill")
+                                .font(.title3)
+                                .foregroundStyle(activeTagIds.isEmpty ? DesignTokens.secondaryText : DesignTokens.accent)
+                        }
+
+                        Button {
+                            showingTagManagement = true
+                        } label: {
+                            Image(systemName: "tag")
+                                .font(.title3)
+                                .foregroundStyle(DesignTokens.secondaryText)
+                        }
+                    }
+                }
+            }
             .sheet(item: $selectedQuote) { quote in
                 QuoteDetailView(quote: quote)
+            }
+            .sheet(isPresented: $showingTagFilter) {
+                TagFilterView { selectedIds in
+                    applyTagFilter(selectedIds)
+                }
+            }
+            .sheet(isPresented: $showingTagManagement) {
+                TagManagementView()
             }
         }
         .onAppear { loadQuotes() }
@@ -185,9 +235,15 @@ struct SavedQuotesView: View {
 
     private var savedEmptyState: some View {
         VStack(spacing: 20) {
-            Image(systemName: "bookmark")
-                .font(.system(size: 56))
-                .foregroundStyle(DesignTokens.secondaryText.opacity(0.5))
+            ZStack {
+                Circle()
+                    .fill(DesignTokens.accent.opacity(0.08))
+                    .frame(width: 120, height: 120)
+
+                Image(systemName: "bookmark")
+                    .font(.system(size: 48))
+                    .foregroundStyle(DesignTokens.secondaryText.opacity(0.4))
+            }
 
             Text("No saved quotes yet")
                 .font(.title3)
@@ -203,9 +259,63 @@ struct SavedQuotesView: View {
         .padding()
     }
 
+    private var filteredEmptyState: some View {
+        VStack(spacing: 20) {
+            ZStack {
+                Circle()
+                    .fill(DesignTokens.accent.opacity(0.08))
+                    .frame(width: 120, height: 120)
+
+                Image(systemName: "tag")
+                    .font(.system(size: 40))
+                    .foregroundStyle(DesignTokens.accent.opacity(0.4))
+            }
+
+            Text("No quotes with these tags")
+                .font(.headline)
+                .foregroundStyle(DesignTokens.primaryText)
+
+            Text("Try selecting different tags or clear the filter.")
+                .font(.subheadline)
+                .foregroundStyle(DesignTokens.secondaryText)
+                .multilineTextAlignment(.center)
+                .padding(.horizontal, 32)
+
+            Button {
+                clearTagFilter()
+            } label: {
+                HStack {
+                    Image(systemName: "xmark.circle")
+                    Text("Clear Filter")
+                }
+                .font(.subheadline.weight(.medium))
+                .foregroundStyle(DesignTokens.accent)
+            }
+        }
+        .padding()
+    }
+
     private var quotesList: some View {
         ScrollView {
             LazyVStack(spacing: 12) {
+                if isFiltering {
+                    HStack {
+                        Image(systemName: "line.3.horizontal.decrease.circle.fill")
+                            .foregroundStyle(DesignTokens.accent)
+                        Text("Filtered by tags")
+                            .font(.caption)
+                            .foregroundStyle(DesignTokens.secondaryText)
+                        Spacer()
+                        Button("Clear") {
+                            clearTagFilter()
+                        }
+                        .font(.caption.weight(.medium))
+                        .foregroundStyle(DesignTokens.accent)
+                    }
+                    .padding(.horizontal, 4)
+                    .padding(.bottom, 4)
+                }
+
                 ForEach(quotes) { quote in
                     SavedQuoteRow(quote: quote)
                         .onTapGesture {
@@ -220,18 +330,52 @@ struct SavedQuotesView: View {
 
     private func loadQuotes() {
         do {
-            // Load all quotes across all books, sorted by date
             let db = DatabaseService.shared
-            var allQuotes: [Quote] = []
+            var loadedQuotes: [Quote] = []
             let books = try db.fetchAllBooks()
             for book in books {
                 let bookQuotes = try db.fetchQuotes(forBookId: book.id)
-                allQuotes.append(contentsOf: bookQuotes)
+                loadedQuotes.append(contentsOf: bookQuotes)
             }
-            quotes = allQuotes.sorted { $0.createdAt > $1.createdAt }
+            allQuotes = loadedQuotes.sorted { $0.createdAt > $1.createdAt }
+            quotes = allQuotes
         } catch {
             // silent fail
         }
+    }
+
+    private func applyTagFilter(_ tagIds: Set<Int64>) {
+        activeTagIds = tagIds
+        isFiltering = !tagIds.isEmpty
+
+        if tagIds.isEmpty {
+            quotes = allQuotes
+            return
+        }
+
+        DispatchQueue.global(qos: .userInitiated).async {
+            var filtered: [Quote] = []
+            for quote in allQuotes {
+                do {
+                    let quoteTagIds = try DatabaseService.shared.fetchTagsForQuote(quoteIdValue: quote.id).map { $0.id }
+                    let quoteTagSet = Set(quoteTagIds)
+                    if !quoteTagSet.isDisjoint(with: tagIds) {
+                        filtered.append(quote)
+                    }
+                } catch {
+                    continue
+                }
+            }
+            DispatchQueue.main.async {
+                quotes = filtered
+            }
+        }
+    }
+
+    private func clearTagFilter() {
+        activeTagIds = []
+        isFiltering = false
+        quotes = allQuotes
     }
 }
 
@@ -239,6 +383,7 @@ struct SavedQuotesView: View {
 struct SavedQuoteRow: View {
     let quote: Quote
     @State private var showingQuoteCard = false
+    @State private var quoteTags: [Tag] = []
 
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
@@ -263,6 +408,20 @@ struct SavedQuoteRow: View {
                 }
             }
 
+            // Tags
+            if !quoteTags.isEmpty {
+                FlowLayout(spacing: 6) {
+                    ForEach(quoteTags.prefix(3)) { tag in
+                        TagPillView(tag: tag)
+                    }
+                    if quoteTags.count > 3 {
+                        Text("+\(quoteTags.count - 3)")
+                            .font(.caption2)
+                            .foregroundStyle(DesignTokens.secondaryText)
+                    }
+                }
+            }
+
             HStack {
                 Image(systemName: "book.closed")
                     .font(.caption2)
@@ -281,6 +440,18 @@ struct SavedQuoteRow: View {
         .sheet(isPresented: $showingQuoteCard) {
             let resolvedBook = (try? DatabaseService.shared.fetchBook(id: quote.bookId)) ?? Book(title: "Unknown Book")
             QuoteCardPreviewView(quote: quote, book: resolvedBook)
+        }
+        .onAppear {
+            loadTags()
+        }
+    }
+
+    private func loadTags() {
+        DispatchQueue.global(qos: .userInitiated).async {
+            let tags = (try? DatabaseService.shared.fetchTagsForQuote(quoteIdValue: quote.id)) ?? []
+            DispatchQueue.main.async {
+                quoteTags = tags
+            }
         }
     }
 }
