@@ -18,6 +18,10 @@ final class LibraryViewModel: ObservableObject {
     @Published var selectedCollectionId: Int64? = nil
     @Published var collectionBooks: [Book] = []
 
+    var totalQuoteCount: Int {
+        quoteCounts.values.reduce(0, +)
+    }
+
     private let db = DatabaseService.shared
 
     init() {

@@ -40,6 +40,7 @@
 		BA4297F6597ED814BC593C1F /* ExportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D7BA43A4B82F0184CD35F1 /* ExportService.swift */; };
 		BD010C5C0F1B0283CC2AE0A1 /* BookDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDC6EC6497FDC597EBC5672 /* BookDetailView.swift */; };
 		BE0E6CC4C0B22116E6FD1A21 /* RecommendationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71DC5C5CBAD9BE82D0B882D /* RecommendationService.swift */; };
+		BE7D04897B5F0C3DA31B2825 /* AdaptiveContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CC29B6DA246C393876A7ED /* AdaptiveContentView.swift */; };
 		DE1724E9146498A92C71E7F4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9453E8552A3EB6FA4186BC23 /* ContentView.swift */; };
 		E267530DC6011B4F698E3A08 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3689DC6408E1DFA20BC417 /* Note.swift */; };
 		EB174797A8BE43EBF1F60D15 /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFF1D1A14D41778B20E4176 /* DatabaseService.swift */; };
@@ -102,6 +103,7 @@
 		9F2DEAB2195F7BACC7A509BA /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		A3776BF021A27BE4F0751728 /* TagPillView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagPillView.swift; sourceTree = "<group>"; };
 		A66360A31A92BE9D1145B814 /* CollectionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionsView.swift; sourceTree = "<group>"; };
+		B1CC29B6DA246C393876A7ED /* AdaptiveContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptiveContentView.swift; sourceTree = "<group>"; };
 		BC3689DC6408E1DFA20BC417 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		CB467DD460CC582B79BE851F /* OnboardingContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingContainerView.swift; sourceTree = "<group>"; };
 		CE643DD7C5CC7CA7BDCE2CC4 /* ReadrWidgetExtension.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = ReadrWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -293,6 +295,7 @@
 		A6C2AFD2F934096404C20BBE /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				B1CC29B6DA246C393876A7ED /* AdaptiveContentView.swift */,
 				6F4A0147AB22FA254AFED43F /* BookCard.swift */,
 				6D3D77CBDC970D406D70B96C /* ErrorStateView.swift */,
 			);
@@ -472,6 +475,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE7D04897B5F0C3DA31B2825 /* AdaptiveContentView.swift in Sources */,
 				96F994B359E6B2D058C30D3A /* AppState.swift in Sources */,
 				B06C9005B96A7F831558FB57 /* AppStoreAssets.swift in Sources */,
 				1ADD9BE03A3C80B7875FFDC1 /* Book.swift in Sources */,
