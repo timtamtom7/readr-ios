@@ -1,0 +1,29 @@
+{
+  "" : {
+    "diagnostics" : "/Users/mauriello/Dev/readr-ios/build/Readr.build/Debug-iphoneos/ReadrWidgetExtension.build/Objects-normal/arm64/ReadrWidgetExtension-primary.dia",
+    "emit-module-dependencies" : "/Users/mauriello/Dev/readr-ios/build/Readr.build/Debug-iphoneos/ReadrWidgetExtension.build/Objects-normal/arm64/ReadrWidgetExtension-primary-emit-module.d",
+    "emit-module-diagnostics" : "/Users/mauriello/Dev/readr-ios/build/Readr.build/Debug-iphoneos/ReadrWidgetExtension.build/Objects-normal/arm64/ReadrWidgetExtension-primary-emit-module.dia",
+    "pch" : "/Users/mauriello/Dev/readr-ios/build/Readr.build/Debug-iphoneos/ReadrWidgetExtension.build/Objects-normal/arm64/ReadrWidgetExtension-primary-Bridging-header.pch",
+    "swift-dependencies" : "/Users/mauriello/Dev/readr-ios/build/Readr.build/Debug-iphoneos/ReadrWidgetExtension.build/Objects-normal/arm64/ReadrWidgetExtension-primary.swiftdeps"
+  },
+  "/Users/mauriello/Dev/readr-ios/ReadrWidget/ReadrWidget.swift" : {
+    "const-values" : "/Users/mauriello/Dev/readr-ios/build/Readr.build/Debug-iphoneos/ReadrWidgetExtension.build/Objects-normal/arm64/ReadrWidget.swiftconstvalues",
+    "dependencies" : "/Users/mauriello/Dev/readr-ios/build/Readr.build/Debug-iphoneos/ReadrWidgetExtension.build/Objects-normal/arm64/ReadrWidget.d",
+    "diagnostics" : "/Users/mauriello/Dev/readr-ios/build/Readr.build/Debug-iphoneos/ReadrWidgetExtension.build/Objects-normal/arm64/ReadrWidget.dia",
+    "index-unit-output-path" : "/Readr.build/Debug-iphoneos/ReadrWidgetExtension.build/Objects-normal/arm64/ReadrWidget.o",
+    "llvm-bc" : "/Users/mauriello/Dev/readr-ios/build/Readr.build/Debug-iphoneos/ReadrWidgetExtension.build/Objects-normal/arm64/ReadrWidget.bc",
+    "object" : "/Users/mauriello/Dev/readr-ios/build/Readr.build/Debug-iphoneos/ReadrWidgetExtension.build/Objects-normal/arm64/ReadrWidget.o",
+    "swift-dependencies" : "/Users/mauriello/Dev/readr-ios/build/Readr.build/Debug-iphoneos/ReadrWidgetExtension.build/Objects-normal/arm64/ReadrWidget.swiftdeps",
+    "swiftmodule" : "/Users/mauriello/Dev/readr-ios/build/Readr.build/Debug-iphoneos/ReadrWidgetExtension.build/Objects-normal/arm64/ReadrWidget~partial.swiftmodule"
+  },
+  "/Users/mauriello/Dev/readr-ios/build/Readr.build/Debug-iphoneos/ReadrWidgetExtension.build/DerivedSources/GeneratedAssetSymbols.swift" : {
+    "const-values" : "/Users/mauriello/Dev/readr-ios/build/Readr.build/Debug-iphoneos/ReadrWidgetExtension.build/Objects-normal/arm64/GeneratedAssetSymbols.swiftconstvalues",
+    "dependencies" : "/Users/mauriello/Dev/readr-ios/build/Readr.build/Debug-iphoneos/ReadrWidgetExtension.build/Objects-normal/arm64/GeneratedAssetSymbols.d",
+    "diagnostics" : "/Users/mauriello/Dev/readr-ios/build/Readr.build/Debug-iphoneos/ReadrWidgetExtension.build/Objects-normal/arm64/GeneratedAssetSymbols.dia",
+    "index-unit-output-path" : "/Readr.build/Debug-iphoneos/ReadrWidgetExtension.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "llvm-bc" : "/Users/mauriello/Dev/readr-ios/build/Readr.build/Debug-iphoneos/ReadrWidgetExtension.build/Objects-normal/arm64/GeneratedAssetSymbols.bc",
+    "object" : "/Users/mauriello/Dev/readr-ios/build/Readr.build/Debug-iphoneos/ReadrWidgetExtension.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "swift-dependencies" : "/Users/mauriello/Dev/readr-ios/build/Readr.build/Debug-iphoneos/ReadrWidgetExtension.build/Objects-normal/arm64/GeneratedAssetSymbols.swiftdeps",
+    "swiftmodule" : "/Users/mauriello/Dev/readr-ios/build/Readr.build/Debug-iphoneos/ReadrWidgetExtension.build/Objects-normal/arm64/GeneratedAssetSymbols~partial.swiftmodule"
+  }
+}
