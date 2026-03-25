@@ -50,6 +50,7 @@
 		DE1724E9146498A92C71E7F4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9453E8552A3EB6FA4186BC23 /* ContentView.swift */; };
 		E267530DC6011B4F698E3A08 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3689DC6408E1DFA20BC417 /* Note.swift */; };
 		E9F3087FC0AF6C867DBC5F24 /* CommunityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EAEF7DD6AC1231FCF787B3 /* CommunityView.swift */; };
+		EACDDD639A9193BE780B953F /* ReadrR11Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78FE5E8253B5864CD299F66 /* ReadrR11Service.swift */; };
 		EB174797A8BE43EBF1F60D15 /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFF1D1A14D41778B20E4176 /* DatabaseService.swift */; };
 		FBDE900FB30355F97C7D72E0 /* OCRService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114C1C6605A2388213284E6B /* OCRService.swift */; };
 /* End PBXBuildFile section */
@@ -120,6 +121,7 @@
 		CB467DD460CC582B79BE851F /* OnboardingContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingContainerView.swift; sourceTree = "<group>"; };
 		CE643DD7C5CC7CA7BDCE2CC4 /* ReadrWidgetExtension.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = ReadrWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1B890D93562500F018F7360 /* ReadrApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadrApp.swift; sourceTree = "<group>"; };
+		D78FE5E8253B5864CD299F66 /* ReadrR11Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadrR11Service.swift; sourceTree = "<group>"; };
 		E1158836073BA2B1030A0E45 /* ReadrWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ReadrWidget.entitlements; sourceTree = "<group>"; };
 		E19339ABBDF8278F7D5D0521 /* CrossDeviceSyncService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrossDeviceSyncService.swift; sourceTree = "<group>"; };
 		E71DC5C5CBAD9BE82D0B882D /* RecommendationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationService.swift; sourceTree = "<group>"; };
@@ -337,6 +339,7 @@
 				44D7BA43A4B82F0184CD35F1 /* ExportService.swift */,
 				114C1C6605A2388213284E6B /* OCRService.swift */,
 				BD1D25469F34D540E1C011B3 /* ReadingInsightsService.swift */,
+				D78FE5E8253B5864CD299F66 /* ReadrR11Service.swift */,
 				E71DC5C5CBAD9BE82D0B882D /* RecommendationService.swift */,
 			);
 			path = Services;
@@ -531,6 +534,7 @@
 				17EAA598A92C4B9149353ADB /* ReadingInsightsService.swift in Sources */,
 				9A7ABDEB110E3A2768113170 /* ReadingInsightsView.swift in Sources */,
 				7F115FEB360785187E4E48AC /* ReadrApp.swift in Sources */,
+				EACDDD639A9193BE780B953F /* ReadrR11Service.swift in Sources */,
 				BE0E6CC4C0B22116E6FD1A21 /* RecommendationService.swift in Sources */,
 				480AEFCB6601607384567589 /* RecommendationsView.swift in Sources */,
 				54837E785B4097B1494E49BD /* SearchView.swift in Sources */,
