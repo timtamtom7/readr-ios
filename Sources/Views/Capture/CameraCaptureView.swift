@@ -200,10 +200,11 @@ class CameraViewController: UIViewController {
             captureSession?.addOutput(output)
         }
 
-        previewLayer = AVCaptureVideoPreviewLayer(session: captureSession!)
+        guard let session = captureSession else { return }
+        previewLayer = AVCaptureVideoPreviewLayer(session: session)
         previewLayer?.videoGravity = .resizeAspectFill
         previewLayer?.frame = view.bounds
-        view.layer.addSublayer(previewLayer!)
+        if let layer = previewLayer { view.layer.addSublayer(layer) }
 
         DispatchQueue.global(qos: .userInitiated).async { [weak self] in
             self?.captureSession?.startRunning()
@@ -257,7 +258,8 @@ class CameraViewController: UIViewController {
             }
         }
 
-        output.capturePhoto(with: settings, delegate: captureDelegate!)
+        guard let delegate = captureDelegate else { return }
+        output.capturePhoto(with: settings, delegate: delegate)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
