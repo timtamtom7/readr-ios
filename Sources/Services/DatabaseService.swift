@@ -508,16 +508,21 @@ final class DatabaseService: @unchecked Sendable {
         """
 
         for row in try db.prepare(sql) {
+            guard let bookId = row[5] as? Int64,
+                  let quoteId = row[0] as? Int64,
+                  let qBookId = row[1] as? Int64 else {
+                continue
+            }
             let book = Book(
-                id: row[5] as! Int64,
+                id: bookId,
                 title: row[6] as? String ?? "",
                 author: row[7] as? String ?? "",
                 coverImagePath: row[8] as? String,
                 createdAt: Date(timeIntervalSince1970: (row[9] as? Double) ?? Date().timeIntervalSince1970)
             )
             let quote = Quote(
-                id: row[0] as! Int64,
-                bookId: row[1] as! Int64,
+                id: quoteId,
+                bookId: qBookId,
                 text: row[2] as? String ?? "",
                 pageImagePath: row[3] as? String,
                 createdAt: Date(timeIntervalSince1970: (row[4] as? Double) ?? Date().timeIntervalSince1970)
