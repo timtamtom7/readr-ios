@@ -488,8 +488,11 @@ struct QuoteCardView: View {
             }
 
             // Use Instagram URL scheme
-            let instagramURL = URL(string: "instagram-stories://share?source_application=app.readr")!
-            let photoLibraryURL = URL(string: "photos-redirect://")!
+            guard let instagramURL = URL(string: "instagram-stories://share?source_application=app.readr"),
+                  let photoLibraryURL = URL(string: "photos-redirect://") else {
+                shareErrorMessage = "Could not create share URLs."
+                return
+            }
 
             if UIApplication.shared.canOpenURL(instagramURL) {
                 // Copy image data to pasteboard for Instagram Stories

@@ -131,7 +131,10 @@ final class DatabaseService: @unchecked Sendable {
 
     private func setupDatabase() {
         do {
-            let documentsPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+            guard let documentsPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
+                print("Database setup error: could not find documents directory")
+                return
+            }
             let dbPath = documentsPath.appendingPathComponent("readr.sqlite3").path
             db = try Connection(dbPath)
             try createTables()
@@ -736,7 +739,9 @@ final class DatabaseService: @unchecked Sendable {
     // MARK: - File Storage
 
     nonisolated func saveImage(_ imageData: Data, filename: String) throws -> String {
-        let documentsPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        guard let documentsPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
+            throw DatabaseError.connectionFailed
+        }
         let imagesDir = documentsPath.appendingPathComponent("images", isDirectory: true)
 
         if !FileManager.default.fileExists(atPath: imagesDir.path) {
