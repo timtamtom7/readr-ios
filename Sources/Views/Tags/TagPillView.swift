@@ -16,12 +16,14 @@ struct TagPillView: View {
 
             if showRemoveButton {
                 Button {
+                    Theme.Haptics.light()
                     onRemove?()
                 } label: {
                     Image(systemName: "xmark")
-                        .font(.system(size: 8, weight: .bold))
+                        .font(.system(size: 11, weight: .bold))
                         .foregroundStyle(isSelected ? .white.opacity(0.8) : tag.color.opacity(0.8))
                 }
+                .accessibilityLabel("Remove tag \(tag.name)")
             }
         }
         .padding(.horizontal, showRemoveButton ? 10 : 12)
@@ -32,6 +34,7 @@ struct TagPillView: View {
         )
         .contentShape(Capsule())
         .onTapGesture {
+            Theme.Haptics.selection()
             onTap?()
         }
     }

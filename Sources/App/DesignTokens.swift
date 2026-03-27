@@ -11,6 +11,24 @@ enum DesignTokens {
     static let accent = Color(hex: "c87b4f")
     static let bookPlaceholder = Color(hex: "e8e0d5")
 
+    // MARK: - Corner Radius Tokens (iOS 26 Liquid Glass)
+    enum CornerRadius {
+        /// Extra small: 6pt
+        static let xs: CGFloat = 6
+        /// Small: 8pt
+        static let small: CGFloat = 8
+        /// Medium: 10pt
+        static let medium: CGFloat = 10
+        /// Default: 12pt
+        static let `default`: CGFloat = 12
+        /// Large: 14pt
+        static let large: CGFloat = 14
+        /// Extra large: 16pt
+        static let xl: CGFloat = 16
+        /// XXL: 20pt
+        static let xxl: CGFloat = 20
+    }
+
     static var background: Color {
         Color(uiColor: UIColor { traitCollection in
             traitCollection.userInterfaceStyle == .dark

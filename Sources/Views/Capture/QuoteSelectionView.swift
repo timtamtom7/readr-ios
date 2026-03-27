@@ -25,11 +25,13 @@ struct QuoteSelectionView: View {
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button {
+                        Theme.Haptics.light()
                         viewModel.reset()
                     } label: {
                         Image(systemName: "xmark")
                             .foregroundStyle(DesignTokens.secondaryText)
                     }
+                    .accessibilityLabel("Cancel and reset")
                 }
             }
             .sheet(isPresented: $showingBookPicker) {
@@ -164,16 +166,21 @@ struct QuoteSelectionView: View {
 
                             Spacer()
 
-                            Button("Change") {
+                            Button {
+                                Theme.Haptics.light()
                                 showingBookPicker = true
+                            } label: {
+                                Text("Change")
                             }
                             .font(.caption)
                             .foregroundStyle(DesignTokens.accent)
+                            .accessibilityLabel("Change linked book")
                         }
                         .padding()
                         .background(DesignTokens.surface, in: RoundedRectangle(cornerRadius: 12))
                     } else {
                         Button {
+                            Theme.Haptics.light()
                             showingBookPicker = true
                         } label: {
                             HStack {
@@ -186,6 +193,7 @@ struct QuoteSelectionView: View {
                             .frame(maxWidth: .infinity)
                             .background(DesignTokens.surface, in: RoundedRectangle(cornerRadius: 12))
                         }
+                        .accessibilityLabel("Link to existing book")
                     }
                 }
 
@@ -210,6 +218,7 @@ struct QuoteSelectionView: View {
 
                 // Save button
                 Button {
+                    Theme.Haptics.success()
                     viewModel.saveQuote(for: matchedBook, libraryVM: libraryVM)
                     dismiss()
                 } label: {
@@ -227,6 +236,7 @@ struct QuoteSelectionView: View {
                 }
                 .disabled(viewModel.selectedQuoteText.isEmpty)
                 .padding(.top, 8)
+                .accessibilityLabel("Save quote")
             }
             .padding()
         }
@@ -242,6 +252,7 @@ struct BookPickerSheet: View {
         NavigationStack {
             List(books) { book in
                 Button {
+                    Theme.Haptics.selection()
                     selectedBook = book
                     dismiss()
                 } label: {

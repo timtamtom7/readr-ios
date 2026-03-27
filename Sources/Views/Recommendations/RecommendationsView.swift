@@ -26,10 +26,14 @@ struct RecommendationsView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button { dismiss() } label: {
+                    Button {
+                        Theme.Haptics.light()
+                        dismiss()
+                    } label: {
                         Image(systemName: "xmark")
                             .foregroundStyle(DesignTokens.secondaryText)
                     }
+                    .accessibilityLabel("Close recommendations")
                 }
             }
         }

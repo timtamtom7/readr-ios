@@ -17,6 +17,7 @@ struct CameraCaptureView: View {
                 // Top bar
                 HStack {
                     Button {
+                        Theme.Haptics.light()
                         dismiss()
                     } label: {
                         Image(systemName: "xmark")
@@ -24,10 +25,12 @@ struct CameraCaptureView: View {
                             .foregroundStyle(.white)
                             .frame(width: 44, height: 44)
                     }
+                    .accessibilityLabel("Close camera")
 
                     Spacer()
 
                     Button {
+                        Theme.Haptics.light()
                         isFlashOn.toggle()
                     } label: {
                         Image(systemName: isFlashOn ? "bolt.fill" : "bolt.slash")
@@ -35,6 +38,7 @@ struct CameraCaptureView: View {
                             .foregroundStyle(isFlashOn ? .yellow : .white)
                             .frame(width: 44, height: 44)
                     }
+                    .accessibilityLabel(isFlashOn ? "Turn off flash" : "Turn on flash")
                 }
                 .padding(.horizontal)
                 .padding(.top, 8)
@@ -65,6 +69,7 @@ struct CameraCaptureView: View {
                     HStack(spacing: 40) {
                         // Photo library button
                         Button {
+                            Theme.Haptics.light()
                             // TODO: Photo picker
                         } label: {
                             Image(systemName: "photo.on.rectangle")
@@ -72,6 +77,7 @@ struct CameraCaptureView: View {
                                 .foregroundStyle(.white)
                                 .frame(width: 50, height: 50)
                         }
+                        .accessibilityLabel("Choose from photo library")
 
                         // Capture button
                         Button {
@@ -87,9 +93,11 @@ struct CameraCaptureView: View {
                                     .frame(width: 60, height: 60)
                             }
                         }
+                        .accessibilityLabel("Capture page")
 
                         // Flip camera
                         Button {
+                            Theme.Haptics.medium()
                             cameraPosition = cameraPosition == .back ? .front : .back
                         } label: {
                             Image(systemName: "camera.rotate")
@@ -97,6 +105,7 @@ struct CameraCaptureView: View {
                                 .foregroundStyle(.white)
                                 .frame(width: 50, height: 50)
                         }
+                        .accessibilityLabel("Flip camera")
                     }
                 }
                 .padding(.bottom, 40)

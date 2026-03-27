@@ -32,34 +32,40 @@ struct LibraryView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button {
+                        Theme.Haptics.light()
                         showingCollections = true
                     } label: {
                         Image(systemName: "books.vertical.fill")
                             .font(.title3)
                             .foregroundStyle(DesignTokens.accent)
                     }
+                    .accessibilityLabel("Collections")
                 }
 
                 ToolbarItem(placement: .topBarTrailing) {
                     HStack(spacing: 16) {
                         Button {
+                            Theme.Haptics.light()
                             showingSearch = true
                         } label: {
                             Image(systemName: "magnifyingglass")
                                 .font(.title3)
                                 .foregroundStyle(DesignTokens.secondaryText)
                         }
+                        .accessibilityLabel("Search books")
                     }
                 }
 
                 ToolbarItem(placement: .primaryAction) {
                     Button {
+                        Theme.Haptics.medium()
                         showingCapture = true
                     } label: {
                         Image(systemName: "plus.circle.fill")
                             .font(.title2)
                             .foregroundStyle(DesignTokens.accent)
                     }
+                    .accessibilityLabel("Capture new book")
                 }
             }
             .sheet(isPresented: $showingCapture) {
@@ -104,12 +110,14 @@ struct LibraryView: View {
                     }
                     .contextMenu {
                         Button {
+                            Theme.Haptics.light()
                             bookToMove = book
                         } label: {
                             Label("Add to Collection", systemImage: "folder.badge.plus")
                         }
 
                         Button(role: .destructive) {
+                            Theme.Haptics.warning()
                             libraryVM.deleteBook(book)
                         } label: {
                             Label("Delete", systemImage: "trash")

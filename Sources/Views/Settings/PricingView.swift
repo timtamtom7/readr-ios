@@ -120,11 +120,13 @@ struct PricingView: View {
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button {
+                        Theme.Haptics.light()
                         dismiss()
                     } label: {
                         Image(systemName: "xmark")
                             .foregroundStyle(DesignTokens.secondaryText)
                     }
+                    .accessibilityLabel("Close pricing")
                 }
             }
         }
@@ -151,6 +153,7 @@ struct PricingView: View {
     private func subscribeButton(for tier: SubscriptionTier) -> some View {
         VStack(spacing: 12) {
             Button {
+                Theme.Haptics.medium()
                 // In production: trigger StoreKit purchase flow
             } label: {
                 HStack {
@@ -173,6 +176,7 @@ struct PricingView: View {
                 )
                 .clipShape(RoundedRectangle(cornerRadius: 14))
             }
+            .accessibilityLabel("Start \(tier.name) subscription at \(tier.price) per month")
 
             Text("Try 7 days free — cancel anytime")
                 .font(.caption)
@@ -188,7 +192,10 @@ struct TierCard: View {
     let onSelect: () -> Void
 
     var body: some View {
-        Button(action: onSelect) {
+        Button {
+            Theme.Haptics.selection()
+            onSelect()
+        } label: {
             VStack(alignment: .leading, spacing: 0) {
                 // Popular badge
                 if tier.isPopular {
@@ -280,6 +287,7 @@ struct TierCard: View {
             )
         }
         .buttonStyle(.plain)
+        .accessibilityLabel("\(tier.name) plan, \(tier.price) per month")
     }
 
     private var paperGradient: some ShapeStyle {

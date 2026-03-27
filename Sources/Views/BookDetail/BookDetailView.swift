@@ -39,16 +39,19 @@ struct BookDetailView: View {
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button {
+                        Theme.Haptics.light()
                         dismiss()
                     } label: {
                         Image(systemName: "xmark")
                             .foregroundStyle(DesignTokens.secondaryText)
                     }
+                    .accessibilityLabel("Close")
                 }
 
                 ToolbarItem(placement: .primaryAction) {
                     Menu {
                         Button(role: .destructive) {
+                            Theme.Haptics.warning()
                             libraryVM.deleteBook(book)
                             dismiss()
                         } label: {
@@ -58,6 +61,7 @@ struct BookDetailView: View {
                         Image(systemName: "ellipsis.circle")
                             .foregroundStyle(DesignTokens.secondaryText)
                     }
+                    .accessibilityLabel("More options")
                 }
             }
             .sheet(item: $selectedQuote) { quote in

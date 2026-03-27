@@ -130,6 +130,7 @@ struct ReadrSubscriptionsView: View {
             .padding(16)
 
             Button {
+                Theme.Haptics.medium()
                 selectedPlan = plan
             } label: {
                 Text("Subscribe")
@@ -142,6 +143,7 @@ struct ReadrSubscriptionsView: View {
             }
             .padding(.horizontal, 16)
             .padding(.bottom, 16)
+            .accessibilityLabel("Subscribe to \(plan.rawValue) plan")
         }
         .background(DesignTokens.surface)
         .clipShape(RoundedRectangle(cornerRadius: 16))

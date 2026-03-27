@@ -49,7 +49,10 @@ struct ErrorStateView: View {
             }
 
             if let retry = retryAction {
-                Button(action: retry) {
+                Button {
+                    Theme.Haptics.medium()
+                    retry()
+                } label: {
                     HStack(spacing: 8) {
                         Image(systemName: "arrow.clockwise")
                         Text("Try Again")
@@ -62,10 +65,12 @@ struct ErrorStateView: View {
                     .clipShape(Capsule())
                 }
                 .padding(.top, 8)
+                .accessibilityLabel("Try again")
             }
 
             if showsSettingsLink {
                 Button {
+                    Theme.Haptics.light()
                     if let url = URL(string: UIApplication.openSettingsURLString) {
                         UIApplication.shared.open(url)
                     }
@@ -74,6 +79,7 @@ struct ErrorStateView: View {
                         .font(.subheadline)
                         .foregroundStyle(errorAccentColor)
                 }
+                .accessibilityLabel("Open settings")
             }
 
             Spacer()

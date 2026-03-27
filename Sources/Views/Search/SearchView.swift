@@ -27,11 +27,13 @@ struct SearchView: View {
 
                         if !libraryVM.searchQuery.isEmpty {
                             Button {
+                                Theme.Haptics.light()
                                 libraryVM.clearSearch()
                             } label: {
                                 Image(systemName: "xmark.circle.fill")
                                     .foregroundStyle(DesignTokens.secondaryText)
                             }
+                            .accessibilityLabel("Clear search")
                         }
                     }
                     .padding(14)
@@ -60,12 +62,14 @@ struct SearchView: View {
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button {
+                        Theme.Haptics.light()
                         libraryVM.clearSearch()
                         dismiss()
                     } label: {
                         Image(systemName: "xmark")
                             .foregroundStyle(DesignTokens.secondaryText)
                     }
+                    .accessibilityLabel("Close search")
                 }
             }
             .sheet(item: $selectedQuote) { quote in

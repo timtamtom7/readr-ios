@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0785F440ED59D6D1127614A8 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C695FACDDDDC4F01712CEC /* Theme.swift */; };
 		0FAD1B83E4CCA6667AFB21BE /* ReadrWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA784B0A43C36D2ECE650C6 /* ReadrWidget.swift */; };
 		17EAA598A92C4B9149353ADB /* ReadingInsightsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1D25469F34D540E1C011B3 /* ReadingInsightsService.swift */; };
 		193F0FDD309D4FB99B82348C /* ReadrWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = CE643DD7C5CC7CA7BDCE2CC4 /* ReadrWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -94,6 +95,7 @@
 		3EEECE5ACC41886A4DFA17D0 /* SubscriptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionsView.swift; sourceTree = "<group>"; };
 		44D7BA43A4B82F0184CD35F1 /* ExportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportService.swift; sourceTree = "<group>"; };
 		462C12C4FBFB5DA9C066FD91 /* PricingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PricingView.swift; sourceTree = "<group>"; };
+		46C695FACDDDDC4F01712CEC /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		4B887A5D421E59A44DBBF54F /* QuoteDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteDetailView.swift; sourceTree = "<group>"; };
 		4CDC6EC6497FDC597EBC5672 /* BookDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailView.swift; sourceTree = "<group>"; };
 		4D2EA0B8584618CDCA11F56B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 				78F19D9AC3069E354A6F703D /* DesignTokens.swift */,
 				6B4A55F23B6946BE3372030B /* Readr.entitlements */,
 				D1B890D93562500F018F7360 /* ReadrApp.swift */,
+				46C695FACDDDDC4F01712CEC /* Theme.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -548,6 +551,7 @@
 				54837E785B4097B1494E49BD /* SearchView.swift in Sources */,
 				B74EACD5D7FFB8CB764A04A8 /* SubscriptionsView.swift in Sources */,
 				AA2259521A645F90A09E7398 /* TagPillView.swift in Sources */,
+				0785F440ED59D6D1127614A8 /* Theme.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

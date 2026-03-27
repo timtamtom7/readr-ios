@@ -215,20 +215,24 @@ struct SavedQuotesView: View {
                 ToolbarItem(placement: .topBarTrailing) {
                     HStack(spacing: 16) {
                         Button {
+                            Theme.Haptics.light()
                             showingTagFilter = true
                         } label: {
                             Image(systemName: activeTagIds.isEmpty ? "line.3.horizontal.decrease.circle" : "line.3.horizontal.decrease.circle.fill")
                                 .font(.title3)
                                 .foregroundStyle(activeTagIds.isEmpty ? DesignTokens.secondaryText : DesignTokens.accent)
                         }
+                        .accessibilityLabel("Filter by tags")
 
                         Button {
+                            Theme.Haptics.light()
                             showingTagManagement = true
                         } label: {
                             Image(systemName: "tag")
                                 .font(.title3)
                                 .foregroundStyle(DesignTokens.secondaryText)
                         }
+                        .accessibilityLabel("Manage tags")
                     }
                 }
             }
@@ -296,6 +300,7 @@ struct SavedQuotesView: View {
                 .padding(.horizontal, 32)
 
             Button {
+                Theme.Haptics.light()
                 clearTagFilter()
             } label: {
                 HStack {
@@ -305,6 +310,7 @@ struct SavedQuotesView: View {
                 .font(.subheadline.weight(.medium))
                 .foregroundStyle(DesignTokens.accent)
             }
+            .accessibilityLabel("Clear tag filter")
         }
         .padding()
     }
@@ -411,6 +417,7 @@ struct SavedQuoteRow: View {
                 Spacer()
 
                 Button {
+                    Theme.Haptics.light()
                     showingQuoteCard = true
                 } label: {
                     Image(systemName: "square.on.square")
@@ -420,6 +427,7 @@ struct SavedQuoteRow: View {
                         .background(DesignTokens.accent.opacity(0.1))
                         .clipShape(Circle())
                 }
+                .accessibilityLabel("Share quote card")
             }
 
             // Tags
@@ -485,6 +493,7 @@ struct SettingsView: View {
                     // Account section
                     Section {
                         Button {
+                            Theme.Haptics.light()
                             showingPricing = true
                         } label: {
                             HStack {
@@ -500,8 +509,10 @@ struct SettingsView: View {
                                     .foregroundStyle(DesignTokens.secondaryText)
                             }
                         }
+                        .accessibilityLabel("View subscription options")
 
                         Button {
+                            Theme.Haptics.light()
                             // Restore purchases
                         } label: {
                             HStack {
@@ -510,6 +521,7 @@ struct SettingsView: View {
                                     .foregroundStyle(DesignTokens.primaryText)
                             }
                         }
+                        .accessibilityLabel("Restore purchases")
                     } header: {
                         Text("Account")
                     }
@@ -541,6 +553,7 @@ struct SettingsView: View {
                         }
 
                         Button {
+                            Theme.Haptics.light()
                             showingExport = true
                         } label: {
                             HStack {
@@ -553,6 +566,7 @@ struct SettingsView: View {
                                     .foregroundStyle(DesignTokens.secondaryText)
                             }
                         }
+                        .accessibilityLabel("Export quotes")
                     } header: {
                         Text("Data")
                     }

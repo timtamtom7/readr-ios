@@ -71,7 +71,7 @@ struct ReadrCommunityView: View {
                         .font(.system(size: 14, weight: .semibold))
                         .foregroundColor(DesignTokens.primaryText)
                     Text("Pages")
-                        .font(.system(size: 10))
+                        .font(.system(size: 11))
                         .foregroundColor(DesignTokens.secondaryText)
                 }
 
@@ -80,7 +80,7 @@ struct ReadrCommunityView: View {
                         .font(.system(size: 14, weight: .semibold))
                         .foregroundColor(DesignTokens.primaryText)
                     Text("Notes")
-                        .font(.system(size: 10))
+                        .font(.system(size: 11))
                         .foregroundColor(DesignTokens.secondaryText)
                 }
 

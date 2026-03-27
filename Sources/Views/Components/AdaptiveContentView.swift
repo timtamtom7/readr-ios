@@ -191,12 +191,14 @@ struct LibraryListView: View {
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
                     Button {
+                        Theme.Haptics.medium()
                         showingCapture = true
                     } label: {
                         Image(systemName: "plus.circle.fill")
                             .font(.title2)
                             .foregroundStyle(DesignTokens.accent)
                     }
+                    .accessibilityLabel("Capture new book")
                 }
             }
             .sheet(isPresented: $showingCapture) {
@@ -487,12 +489,14 @@ struct CommunityQuoteCard: View {
                 Spacer()
 
                 Button {
+                    Theme.Haptics.light()
                     // Like action
                 } label: {
                     Image(systemName: "heart")
                         .font(.caption)
                         .foregroundStyle(DesignTokens.secondaryText)
                 }
+                .accessibilityLabel("Like")
             }
         }
         .padding()
