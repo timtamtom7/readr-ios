@@ -1,0 +1,48 @@
+{
+  "source": "/Users/mauriello/Dev/readr-ios/ReadrWidget/ReadrWidget.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "\"%@...\"",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 59
+        }
+      },
+      {
+        "comment": "",
+        "key": "\"%@\"",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 102
+        }
+      },
+      {
+        "comment": "",
+        "key": "Readr",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 97
+        }
+      },
+      {
+        "comment": "",
+        "key": "Quote of the Day",
+        "location": {
+          "startingColumn": 35,
+          "startingLine": 140
+        }
+      },
+      {
+        "comment": "",
+        "key": "A random quote from your Readr library.",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 141
+        }
+      }
+    ]
+  },
+  "version": 1
+}

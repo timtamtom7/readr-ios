@@ -8,6 +8,7 @@ struct LibraryView: View {
     @State private var showingCollections = false
     @State private var bookToMove: Book?
     @State private var showingMoveSheet = false
+    @State private var showingError = false
 
     private let columns = [
         GridItem(.adaptive(minimum: 150, maximum: 200), spacing: 16)
@@ -88,6 +89,14 @@ struct LibraryView: View {
                 MoveToCollectionSheet(book: book)
                     .environmentObject(libraryVM)
             }
+            .alert("Library Error", isPresented: $showingError) {
+                Button("OK", role: .cancel) {}
+            } message: {
+                Text(libraryVM.errorMessage ?? "An unknown error occurred.")
+            }
+        }
+        .onChange(of: libraryVM.errorMessage) { _, newValue in
+            showingError = (newValue != nil)
         }
     }
 

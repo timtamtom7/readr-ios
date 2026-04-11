@@ -91,6 +91,8 @@ struct QuoteCardView: View {
                         .foregroundStyle(template.textColor.opacity(0.6))
                         .padding(12)
                 }
+                .accessibilityLabel("Share quote")
+                .accessibilityHint("Double tap to open sharing options for this quote")
             }
         }
         .confirmationDialog("Share Quote Card", isPresented: $showingExportOptions) {

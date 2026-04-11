@@ -1,0 +1,37 @@
+{
+  "/Users/mauriello/Dev/readr-ios/Sources/App/AppState.swift" : {
+    "const-values" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/AppState.swiftconstvalues",
+    "dependencies" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/AppState.d",
+    "diagnostics" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/AppState.dia",
+    "object" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/AppState.o",
+    "swift-dependencies" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/AppState.swiftdeps"
+  },
+  "/Users/mauriello/Dev/readr-ios/Sources/AppStore/AppStoreAssets.swift" : {
+    "const-values" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/AppStoreAssets.swiftconstvalues",
+    "dependencies" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/AppStoreAssets.d",
+    "diagnostics" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/AppStoreAssets.dia",
+    "object" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/AppStoreAssets.o",
+    "swift-dependencies" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/AppStoreAssets.swiftdeps"
+  },
+  "/Users/mauriello/Dev/readr-ios/Sources/Models/Book.swift" : {
+    "const-values" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/Book.swiftconstvalues",
+    "dependencies" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/Book.d",
+    "diagnostics" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/Book.dia",
+    "object" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/Book.o",
+    "swift-dependencies" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/Book.swiftdeps"
+  },
+  "/Users/mauriello/Dev/readr-ios/Sources/Views/Components/AdaptiveContentView.swift" : {
+    "const-values" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/AdaptiveContentView.swiftconstvalues",
+    "dependencies" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/AdaptiveContentView.d",
+    "diagnostics" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/AdaptiveContentView.dia",
+    "object" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/AdaptiveContentView.o",
+    "swift-dependencies" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/AdaptiveContentView.swiftdeps"
+  },
+  "/Users/mauriello/Dev/readr-ios/Sources/Views/Components/BookCard.swift" : {
+    "const-values" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/BookCard.swiftconstvalues",
+    "dependencies" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/BookCard.d",
+    "diagnostics" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/BookCard.dia",
+    "object" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/BookCard.o",
+    "swift-dependencies" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/BookCard.swiftdeps"
+  }
+}

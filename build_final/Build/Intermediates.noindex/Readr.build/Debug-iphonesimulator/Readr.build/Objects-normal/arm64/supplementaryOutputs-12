@@ -1,0 +1,37 @@
+{
+  "/Users/mauriello/Dev/readr-ios/Sources/ViewModels/CaptureViewModel.swift" : {
+    "const-values" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/CaptureViewModel.swiftconstvalues",
+    "dependencies" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/CaptureViewModel.d",
+    "diagnostics" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/CaptureViewModel.dia",
+    "object" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/CaptureViewModel.o",
+    "swift-dependencies" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/CaptureViewModel.swiftdeps"
+  },
+  "/Users/mauriello/Dev/readr-ios/Sources/Views/BookDetail/BookDetailView.swift" : {
+    "const-values" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/BookDetailView.swiftconstvalues",
+    "dependencies" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/BookDetailView.d",
+    "diagnostics" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/BookDetailView.dia",
+    "object" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/BookDetailView.o",
+    "swift-dependencies" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/BookDetailView.swiftdeps"
+  },
+  "/Users/mauriello/Dev/readr-ios/Sources/Views/Capture/CameraCaptureView.swift" : {
+    "const-values" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/CameraCaptureView.swiftconstvalues",
+    "dependencies" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/CameraCaptureView.d",
+    "diagnostics" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/CameraCaptureView.dia",
+    "object" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/CameraCaptureView.o",
+    "swift-dependencies" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/CameraCaptureView.swiftdeps"
+  },
+  "/Users/mauriello/Dev/readr-ios/Sources/Views/Capture/CaptureFlowView.swift" : {
+    "const-values" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/CaptureFlowView.swiftconstvalues",
+    "dependencies" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/CaptureFlowView.d",
+    "diagnostics" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/CaptureFlowView.dia",
+    "object" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/CaptureFlowView.o",
+    "swift-dependencies" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/CaptureFlowView.swiftdeps"
+  },
+  "/Users/mauriello/Dev/readr-ios/Sources/Views/Notes/BookNotesView.swift" : {
+    "const-values" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/BookNotesView.swiftconstvalues",
+    "dependencies" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/BookNotesView.d",
+    "diagnostics" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/BookNotesView.dia",
+    "object" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/BookNotesView.o",
+    "swift-dependencies" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/BookNotesView.swiftdeps"
+  }
+}

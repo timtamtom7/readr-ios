@@ -1,0 +1,16 @@
+{
+  "source": "/Users/mauriello/Dev/readr-ios/Sources/Views/Capture/CameraCaptureView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Hold parallel to the page",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 61
+        }
+      }
+    ]
+  },
+  "version": 1
+}

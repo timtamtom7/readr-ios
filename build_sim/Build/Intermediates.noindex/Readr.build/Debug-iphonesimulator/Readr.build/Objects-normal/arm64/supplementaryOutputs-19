@@ -1,0 +1,30 @@
+{
+  "/Users/mauriello/Dev/readr-ios/Sources/Models/ReadrR12R20.swift" : {
+    "const-values" : "/Users/mauriello/Dev/readr-ios/build_sim/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/ReadrR12R20.swiftconstvalues",
+    "dependencies" : "/Users/mauriello/Dev/readr-ios/build_sim/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/ReadrR12R20.d",
+    "diagnostics" : "/Users/mauriello/Dev/readr-ios/build_sim/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/ReadrR12R20.dia",
+    "object" : "/Users/mauriello/Dev/readr-ios/build_sim/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/ReadrR12R20.o",
+    "swift-dependencies" : "/Users/mauriello/Dev/readr-ios/build_sim/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/ReadrR12R20.swiftdeps"
+  },
+  "/Users/mauriello/Dev/readr-ios/Sources/Services/ReadrR12R20Service.swift" : {
+    "const-values" : "/Users/mauriello/Dev/readr-ios/build_sim/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/ReadrR12R20Service.swiftconstvalues",
+    "dependencies" : "/Users/mauriello/Dev/readr-ios/build_sim/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/ReadrR12R20Service.d",
+    "diagnostics" : "/Users/mauriello/Dev/readr-ios/build_sim/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/ReadrR12R20Service.dia",
+    "object" : "/Users/mauriello/Dev/readr-ios/build_sim/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/ReadrR12R20Service.o",
+    "swift-dependencies" : "/Users/mauriello/Dev/readr-ios/build_sim/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/ReadrR12R20Service.swiftdeps"
+  },
+  "/Users/mauriello/Dev/readr-ios/Sources/Services/RecommendationService.swift" : {
+    "const-values" : "/Users/mauriello/Dev/readr-ios/build_sim/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/RecommendationService.swiftconstvalues",
+    "dependencies" : "/Users/mauriello/Dev/readr-ios/build_sim/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/RecommendationService.d",
+    "diagnostics" : "/Users/mauriello/Dev/readr-ios/build_sim/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/RecommendationService.dia",
+    "object" : "/Users/mauriello/Dev/readr-ios/build_sim/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/RecommendationService.o",
+    "swift-dependencies" : "/Users/mauriello/Dev/readr-ios/build_sim/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/RecommendationService.swiftdeps"
+  },
+  "/Users/mauriello/Dev/readr-ios/Sources/Views/Recommendations/RecommendationsView.swift" : {
+    "const-values" : "/Users/mauriello/Dev/readr-ios/build_sim/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/RecommendationsView.swiftconstvalues",
+    "dependencies" : "/Users/mauriello/Dev/readr-ios/build_sim/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/RecommendationsView.d",
+    "diagnostics" : "/Users/mauriello/Dev/readr-ios/build_sim/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/RecommendationsView.dia",
+    "object" : "/Users/mauriello/Dev/readr-ios/build_sim/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/RecommendationsView.o",
+    "swift-dependencies" : "/Users/mauriello/Dev/readr-ios/build_sim/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/RecommendationsView.swiftdeps"
+  }
+}

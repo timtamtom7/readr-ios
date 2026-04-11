@@ -1,0 +1,30 @@
+{
+  "/Users/mauriello/Dev/readr-ios/Sources/Models/Note.swift" : {
+    "const-values" : "/Users/mauriello/Dev/readr-ios/build/Readr.build/Debug-iphoneos/Readr.build/Objects-normal/arm64/Note.swiftconstvalues",
+    "dependencies" : "/Users/mauriello/Dev/readr-ios/build/Readr.build/Debug-iphoneos/Readr.build/Objects-normal/arm64/Note.d",
+    "diagnostics" : "/Users/mauriello/Dev/readr-ios/build/Readr.build/Debug-iphoneos/Readr.build/Objects-normal/arm64/Note.dia",
+    "object" : "/Users/mauriello/Dev/readr-ios/build/Readr.build/Debug-iphoneos/Readr.build/Objects-normal/arm64/Note.o",
+    "swift-dependencies" : "/Users/mauriello/Dev/readr-ios/build/Readr.build/Debug-iphoneos/Readr.build/Objects-normal/arm64/Note.swiftdeps"
+  },
+  "/Users/mauriello/Dev/readr-ios/Sources/Services/OCRService.swift" : {
+    "const-values" : "/Users/mauriello/Dev/readr-ios/build/Readr.build/Debug-iphoneos/Readr.build/Objects-normal/arm64/OCRService.swiftconstvalues",
+    "dependencies" : "/Users/mauriello/Dev/readr-ios/build/Readr.build/Debug-iphoneos/Readr.build/Objects-normal/arm64/OCRService.d",
+    "diagnostics" : "/Users/mauriello/Dev/readr-ios/build/Readr.build/Debug-iphoneos/Readr.build/Objects-normal/arm64/OCRService.dia",
+    "object" : "/Users/mauriello/Dev/readr-ios/build/Readr.build/Debug-iphoneos/Readr.build/Objects-normal/arm64/OCRService.o",
+    "swift-dependencies" : "/Users/mauriello/Dev/readr-ios/build/Readr.build/Debug-iphoneos/Readr.build/Objects-normal/arm64/OCRService.swiftdeps"
+  },
+  "/Users/mauriello/Dev/readr-ios/Sources/Views/Onboarding/OnboardingContainerView.swift" : {
+    "const-values" : "/Users/mauriello/Dev/readr-ios/build/Readr.build/Debug-iphoneos/Readr.build/Objects-normal/arm64/OnboardingContainerView.swiftconstvalues",
+    "dependencies" : "/Users/mauriello/Dev/readr-ios/build/Readr.build/Debug-iphoneos/Readr.build/Objects-normal/arm64/OnboardingContainerView.d",
+    "diagnostics" : "/Users/mauriello/Dev/readr-ios/build/Readr.build/Debug-iphoneos/Readr.build/Objects-normal/arm64/OnboardingContainerView.dia",
+    "object" : "/Users/mauriello/Dev/readr-ios/build/Readr.build/Debug-iphoneos/Readr.build/Objects-normal/arm64/OnboardingContainerView.o",
+    "swift-dependencies" : "/Users/mauriello/Dev/readr-ios/build/Readr.build/Debug-iphoneos/Readr.build/Objects-normal/arm64/OnboardingContainerView.swiftdeps"
+  },
+  "/Users/mauriello/Dev/readr-ios/Sources/Views/Settings/PricingView.swift" : {
+    "const-values" : "/Users/mauriello/Dev/readr-ios/build/Readr.build/Debug-iphoneos/Readr.build/Objects-normal/arm64/PricingView.swiftconstvalues",
+    "dependencies" : "/Users/mauriello/Dev/readr-ios/build/Readr.build/Debug-iphoneos/Readr.build/Objects-normal/arm64/PricingView.d",
+    "diagnostics" : "/Users/mauriello/Dev/readr-ios/build/Readr.build/Debug-iphoneos/Readr.build/Objects-normal/arm64/PricingView.dia",
+    "object" : "/Users/mauriello/Dev/readr-ios/build/Readr.build/Debug-iphoneos/Readr.build/Objects-normal/arm64/PricingView.o",
+    "swift-dependencies" : "/Users/mauriello/Dev/readr-ios/build/Readr.build/Debug-iphoneos/Readr.build/Objects-normal/arm64/PricingView.swiftdeps"
+  }
+}

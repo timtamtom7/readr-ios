@@ -1,0 +1,64 @@
+{
+  "source": "/Users/mauriello/Dev/readr-ios/Sources/Views/CrossDeviceSyncView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Sync",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 21
+        }
+      },
+      {
+        "comment": "",
+        "key": "iCloud Sync",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 30
+        }
+      },
+      {
+        "comment": "",
+        "key": "Devices",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 65
+        }
+      },
+      {
+        "comment": "",
+        "key": "No devices connected",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 75
+        }
+      },
+      {
+        "comment": "",
+        "key": "Sign in with the same Apple ID on other devices to sync your library.",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 79
+        }
+      },
+      {
+        "comment": "",
+        "key": "Connected",
+        "location": {
+          "startingColumn": 43,
+          "startingLine": 108
+        }
+      },
+      {
+        "comment": "",
+        "key": "Last seen recently",
+        "location": {
+          "startingColumn": 57,
+          "startingLine": 108
+        }
+      }
+    ]
+  },
+  "version": 1
+}

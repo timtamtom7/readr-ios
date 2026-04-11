@@ -1,0 +1,30 @@
+{
+  "/Users/mauriello/Dev/readr-ios/Sources/Views/Search/SearchView.swift" : {
+    "const-values" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/SearchView.swiftconstvalues",
+    "dependencies" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/SearchView.d",
+    "diagnostics" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/SearchView.dia",
+    "object" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/SearchView.o",
+    "swift-dependencies" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/SearchView.swiftdeps"
+  },
+  "/Users/mauriello/Dev/readr-ios/Sources/Views/SubscriptionsView.swift" : {
+    "const-values" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/SubscriptionsView.swiftconstvalues",
+    "dependencies" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/SubscriptionsView.d",
+    "diagnostics" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/SubscriptionsView.dia",
+    "object" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/SubscriptionsView.o",
+    "swift-dependencies" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/SubscriptionsView.swiftdeps"
+  },
+  "/Users/mauriello/Dev/readr-ios/Sources/Views/Tags/TagPillView.swift" : {
+    "const-values" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/TagPillView.swiftconstvalues",
+    "dependencies" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/TagPillView.d",
+    "diagnostics" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/TagPillView.dia",
+    "object" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/TagPillView.o",
+    "swift-dependencies" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/TagPillView.swiftdeps"
+  },
+  "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/DerivedSources/GeneratedAssetSymbols.swift" : {
+    "const-values" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/GeneratedAssetSymbols.swiftconstvalues",
+    "dependencies" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/GeneratedAssetSymbols.d",
+    "diagnostics" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/GeneratedAssetSymbols.dia",
+    "object" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "swift-dependencies" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/GeneratedAssetSymbols.swiftdeps"
+  }
+}

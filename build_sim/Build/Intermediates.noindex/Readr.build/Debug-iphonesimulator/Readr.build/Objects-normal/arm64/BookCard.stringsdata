@@ -1,0 +1,16 @@
+{
+  "source": "/Users/mauriello/Dev/readr-ios/Sources/Views/Components/BookCard.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "%lld quote%@",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 33
+        }
+      }
+    ]
+  },
+  "version": 1
+}

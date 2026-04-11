@@ -1,0 +1,30 @@
+{
+  "/Users/mauriello/Dev/readr-ios/Sources/Models/Quote.swift" : {
+    "const-values" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/Quote.swiftconstvalues",
+    "dependencies" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/Quote.d",
+    "diagnostics" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/Quote.dia",
+    "object" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/Quote.o",
+    "swift-dependencies" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/Quote.swiftdeps"
+  },
+  "/Users/mauriello/Dev/readr-ios/Sources/Views/Capture/QuoteSelectionView.swift" : {
+    "const-values" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/QuoteSelectionView.swiftconstvalues",
+    "dependencies" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/QuoteSelectionView.d",
+    "diagnostics" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/QuoteSelectionView.dia",
+    "object" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/QuoteSelectionView.o",
+    "swift-dependencies" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/QuoteSelectionView.swiftdeps"
+  },
+  "/Users/mauriello/Dev/readr-ios/Sources/Views/QuoteCard/QuoteCardView.swift" : {
+    "const-values" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/QuoteCardView.swiftconstvalues",
+    "dependencies" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/QuoteCardView.d",
+    "diagnostics" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/QuoteCardView.dia",
+    "object" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/QuoteCardView.o",
+    "swift-dependencies" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/QuoteCardView.swiftdeps"
+  },
+  "/Users/mauriello/Dev/readr-ios/Sources/Views/QuoteDetail/QuoteDetailView.swift" : {
+    "const-values" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/QuoteDetailView.swiftconstvalues",
+    "dependencies" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/QuoteDetailView.d",
+    "diagnostics" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/QuoteDetailView.dia",
+    "object" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/QuoteDetailView.o",
+    "swift-dependencies" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/QuoteDetailView.swiftdeps"
+  }
+}

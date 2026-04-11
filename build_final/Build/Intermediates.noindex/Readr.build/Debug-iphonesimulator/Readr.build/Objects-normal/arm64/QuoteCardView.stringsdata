@@ -1,0 +1,184 @@
+{
+  "source": "/Users/mauriello/Dev/readr-ios/Sources/Views/QuoteCard/QuoteCardView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Share Quote Card",
+        "location": {
+          "startingColumn": 29,
+          "startingLine": 96
+        }
+      },
+      {
+        "comment": "",
+        "key": "Share Failed",
+        "location": {
+          "startingColumn": 16,
+          "startingLine": 116
+        }
+      },
+      {
+        "comment": "",
+        "key": "Share as Image",
+        "location": {
+          "startingColumn": 20,
+          "startingLine": 97
+        }
+      },
+      {
+        "comment": "",
+        "key": "Share to Instagram",
+        "location": {
+          "startingColumn": 20,
+          "startingLine": 100
+        }
+      },
+      {
+        "comment": "",
+        "key": "Copy Text",
+        "location": {
+          "startingColumn": 20,
+          "startingLine": 103
+        }
+      },
+      {
+        "comment": "",
+        "key": "Export as PDF",
+        "location": {
+          "startingColumn": 20,
+          "startingLine": 106
+        }
+      },
+      {
+        "comment": "",
+        "key": "Cancel",
+        "location": {
+          "startingColumn": 20,
+          "startingLine": 109
+        }
+      },
+      {
+        "comment": "",
+        "key": "OK",
+        "location": {
+          "startingColumn": 20,
+          "startingLine": 117
+        }
+      },
+      {
+        "comment": "",
+        "key": "Copied to clipboard",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 123
+        }
+      },
+      {
+        "comment": "",
+        "key": "— %@",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 177
+        }
+      },
+      {
+        "comment": "",
+        "key": "“",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 306
+        }
+      },
+      {
+        "comment": "",
+        "key": "— %@",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 369
+        }
+      },
+      {
+        "comment": "",
+        "key": "“",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 412
+        }
+      },
+      {
+        "comment": "",
+        "key": "Quote Card",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 641
+        }
+      },
+      {
+        "comment": "",
+        "key": "“",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 668
+        }
+      },
+      {
+        "comment": "",
+        "key": "Quote of the Day",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 774
+        }
+      },
+      {
+        "comment": "",
+        "key": "Create Quote Card",
+        "location": {
+          "startingColumn": 42,
+          "startingLine": 740
+        }
+      },
+      {
+        "comment": "",
+        "key": "Show Another Quote",
+        "location": {
+          "startingColumn": 42,
+          "startingLine": 758
+        }
+      },
+      {
+        "comment": "",
+        "key": "No quotes yet",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 809
+        }
+      },
+      {
+        "comment": "",
+        "key": "Scan your first book page to start collecting quotes.",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 813
+        }
+      },
+      {
+        "comment": "",
+        "key": "Couldn't load quote",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 834
+        }
+      },
+      {
+        "comment": "",
+        "key": "Try Again",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 849
+        }
+      }
+    ]
+  },
+  "version": 1
+}

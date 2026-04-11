@@ -1,0 +1,88 @@
+{
+  "source": "/Users/mauriello/Dev/readr-ios/Sources/Views/BookDetail/BookDetailView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Delete Book",
+        "location": {
+          "startingColumn": 35,
+          "startingLine": 55
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld quote%@",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 97
+        }
+      },
+      {
+        "comment": "",
+        "key": "Notes",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 141
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 152
+        }
+      },
+      {
+        "comment": "",
+        "key": "Add personal notes and reflections",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 182
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld note%@",
+        "location": {
+          "startingColumn": 46,
+          "startingLine": 179
+        }
+      },
+      {
+        "comment": "",
+        "key": "No notes yet",
+        "location": {
+          "startingColumn": 96,
+          "startingLine": 179
+        }
+      },
+      {
+        "comment": "",
+        "key": "Quotes",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 202
+        }
+      },
+      {
+        "comment": "",
+        "key": "No quotes saved yet",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 207
+        }
+      },
+      {
+        "comment": "",
+        "key": "\"%@\"",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 246
+        }
+      }
+    ]
+  },
+  "version": 1
+}

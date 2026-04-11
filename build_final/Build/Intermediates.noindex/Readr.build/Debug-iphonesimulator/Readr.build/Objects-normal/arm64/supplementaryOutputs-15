@@ -1,0 +1,30 @@
+{
+  "/Users/mauriello/Dev/readr-ios/Sources/Services/ExportService.swift" : {
+    "const-values" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/ExportService.swiftconstvalues",
+    "dependencies" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/ExportService.d",
+    "diagnostics" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/ExportService.dia",
+    "object" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/ExportService.o",
+    "swift-dependencies" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/ExportService.swiftdeps"
+  },
+  "/Users/mauriello/Dev/readr-ios/Sources/ViewModels/LibraryViewModel.swift" : {
+    "const-values" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/LibraryViewModel.swiftconstvalues",
+    "dependencies" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/LibraryViewModel.d",
+    "diagnostics" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/LibraryViewModel.dia",
+    "object" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/LibraryViewModel.o",
+    "swift-dependencies" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/LibraryViewModel.swiftdeps"
+  },
+  "/Users/mauriello/Dev/readr-ios/Sources/Views/Export/ExportView.swift" : {
+    "const-values" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/ExportView.swiftconstvalues",
+    "dependencies" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/ExportView.d",
+    "diagnostics" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/ExportView.dia",
+    "object" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/ExportView.o",
+    "swift-dependencies" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/ExportView.swiftdeps"
+  },
+  "/Users/mauriello/Dev/readr-ios/Sources/Views/Library/LibraryView.swift" : {
+    "const-values" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/LibraryView.swiftconstvalues",
+    "dependencies" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/LibraryView.d",
+    "diagnostics" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/LibraryView.dia",
+    "object" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/LibraryView.o",
+    "swift-dependencies" : "/Users/mauriello/Dev/readr-ios/build_final/Build/Intermediates.noindex/Readr.build/Debug-iphonesimulator/Readr.build/Objects-normal/arm64/LibraryView.swiftdeps"
+  }
+}

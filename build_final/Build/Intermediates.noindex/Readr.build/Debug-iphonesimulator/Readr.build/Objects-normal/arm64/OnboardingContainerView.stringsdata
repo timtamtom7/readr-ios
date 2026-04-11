@@ -1,0 +1,112 @@
+{
+  "source": "/Users/mauriello/Dev/readr-ios/Sources/Views/Onboarding/OnboardingContainerView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Back",
+        "location": {
+          "startingColumn": 32,
+          "startingLine": 44
+        }
+      },
+      {
+        "comment": "",
+        "key": "Next",
+        "location": {
+          "startingColumn": 32,
+          "startingLine": 55
+        }
+      },
+      {
+        "comment": "",
+        "key": "Every great quote\ndeserves a home",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 82
+        }
+      },
+      {
+        "comment": "",
+        "key": "You've dog-eared pages, scribbled in margins, and highlighted passages that moved you. Readr gives those moments a permanent place.",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 87
+        }
+      },
+      {
+        "comment": "",
+        "key": "Capture any page",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 112
+        }
+      },
+      {
+        "comment": "",
+        "key": "Hold your phone over any book page. Readr automatically detects the page boundaries and extracts the text in seconds.",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 117
+        }
+      },
+      {
+        "comment": "",
+        "key": "Build your library",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 142
+        }
+      },
+      {
+        "comment": "",
+        "key": "Every quote you capture is organized by book. Flip through your collection — find that passage you loved in *Sapiens* or that poem you bookmarked years ago.",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 147
+        }
+      },
+      {
+        "comment": "",
+        "key": "Never lose a quote again",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 174
+        }
+      },
+      {
+        "comment": "",
+        "key": "The books you read leave marks on you. Let's make sure you remember them. Ready to scan your first page?",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 179
+        }
+      },
+      {
+        "comment": "",
+        "key": "Start Scanning",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 190
+        }
+      },
+      {
+        "comment": "",
+        "key": "The only way to do\ngreat work is to love\nwhat you do.",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 401
+        }
+      },
+      {
+        "comment": "",
+        "key": "Steve Jobs",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 411
+        }
+      }
+    ]
+  },
+  "version": 1
+}
